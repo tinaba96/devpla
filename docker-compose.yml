@@ -1,33 +1,33 @@
-version: '3'
+version: '3.7'
 services:
-  DevPla:
-    image: nginx:1.15.6
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php
+    volumes:
+      - ./src:/var/www/html
     ports:
-      - "8000:80"
-    depends_on:
-      - app
-    volumes:
-      - ./docker/web/default.conf:/etc/nginx/conf.d/default.conf
-      - .:/var/www/html
-  app:
-    build: ./docker/php
-    depends_on:
-      - mysql
-    volumes:
-      - .:/var/www/html
+      - "9000:9000"
   mysql:
     image: mysql:5.7
-    environment:
-      MYSQL_DATABASE: sample
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: password
+    container_name: mysql
     ports:
-      - "3306:3306"
+      -  "3306:3306"
     volumes:
-      - mysql-data:/var/lib/mysql
-volumes:
-  mysql-data:
-
-
-
+      -  ./db:/var/lib/mysql
+      -  ./my_conf:/etc/mysql/conf.d
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: laravel
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    ports:
+      -  "8080:80"
+    volumes:
+      -  ./src:/var/www/html
+      -  ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      -  php
+      -  mysql
