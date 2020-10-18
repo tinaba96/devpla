@@ -19,7 +19,7 @@ services:
       -  ./my_conf:/etc/mysql/conf.d
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: devpla
   nginx:
     image: nginx:stable-alpine
     container_name: nginx
