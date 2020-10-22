@@ -14,7 +14,7 @@ class AddUserIdToPosts extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
 
             // 外部キーを設定する
             $table->foreign('user_id')->references('id')->on('users');

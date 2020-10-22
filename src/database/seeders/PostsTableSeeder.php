@@ -13,8 +13,13 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         DB::table('posts')->insert([
-            'title' => str_random(10),
-            'body' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit',
-        ]);
+            'title' =>  'タイトル。',
+            'body' => 'テキスト。テキスト。テキスト。テキスト。テキスト。',
+          ]);
+    
+          DB::table('posts')->insert([
+            'title' =>  'タイトル。',
+            'body' => 'テキスト。テキスト。テキスト。テキスト。テキスト。',
+          ]);
     }
 }
