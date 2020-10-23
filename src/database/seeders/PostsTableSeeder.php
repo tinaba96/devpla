@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Post;
+use App\Models\Post;
 
 class PostsTableSeeder extends Seeder
 {
@@ -17,9 +17,5 @@ class PostsTableSeeder extends Seeder
             'body' => 'テキスト。テキスト。テキスト。テキスト。テキスト。',
           ]);
     
-          DB::table('posts')->insert([
-            'title' =>  'タイトル。',
-            'body' => 'テキスト。テキスト。テキスト。テキスト。テキスト。',
-          ]);
     }
 }
