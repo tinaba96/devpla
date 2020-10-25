@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Post;
+use App\Models\Post;
 
 class PostsTableSeeder extends Seeder
 {
@@ -12,13 +12,10 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-
-        $user = DB::table('users')->first();
-
         DB::table('posts')->insert([
-            'user_id' => $user->id,
             'title' =>  'タイトル。',
-            'body' => 'テキスト。テキスト',
+            'body' => 'テキスト。テキスト。テキスト。テキスト。テキスト。',
           ]);
+    
     }
 }
