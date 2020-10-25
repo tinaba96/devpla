@@ -16,8 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-<<<<<<< HEAD
-=======
-
-Auth::routes();
->>>>>>> 9abed57f42e52757e819c859ab7f295e4fb6fb1d
