@@ -72,13 +72,6 @@ interface MigrationRepositoryInterface
     public function repositoryExists();
 
     /**
-     * Delete the migration repository data store.
-     *
-     * @return void
-     */
-    public function deleteRepository();
-
-    /**
      * Set the information source to gather data.
      *
      * @param  string  $name

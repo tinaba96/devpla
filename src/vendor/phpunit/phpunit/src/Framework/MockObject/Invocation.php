@@ -9,20 +9,9 @@
  */
 namespace PHPUnit\Framework\MockObject;
 
-use function array_map;
-use function explode;
-use function get_class;
-use function implode;
-use function is_object;
-use function sprintf;
-use function strpos;
-use function strtolower;
-use function substr;
-use Doctrine\Instantiator\Instantiator;
 use PHPUnit\Framework\SelfDescribing;
 use PHPUnit\Util\Type;
 use SebastianBergmann\Exporter\Exporter;
-use stdClass;
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -72,12 +61,14 @@ final class Invocation implements SelfDescribing
         $this->object      = $object;
         $this->proxiedCall = $proxiedCall;
 
-        if (strtolower($methodName) === '__tostring') {
+        $returnType = \ltrim($returnType, ': ');
+
+        if (\strtolower($methodName) === '__tostring') {
             $returnType = 'string';
         }
 
-        if (strpos($returnType, '?') === 0) {
-            $returnType                 = substr($returnType, 1);
+        if (\strpos($returnType, '?') === 0) {
+            $returnType                 = \substr($returnType, 1);
             $this->isReturnTypeNullable = true;
         }
 
@@ -88,7 +79,7 @@ final class Invocation implements SelfDescribing
         }
 
         foreach ($this->parameters as $key => $value) {
-            if (is_object($value)) {
+            if (\is_object($value)) {
                 $this->parameters[$key] = $this->cloneObject($value);
             }
         }
@@ -120,20 +111,7 @@ final class Invocation implements SelfDescribing
             return;
         }
 
-        $returnType = $this->returnType;
-
-        if (strpos($returnType, '|') !== false) {
-            $types      = explode('|', $returnType);
-            $returnType = $types[0];
-
-            foreach ($types as $type) {
-                if ($type === 'null') {
-                    return;
-                }
-            }
-        }
-
-        switch (strtolower($returnType)) {
+        switch (\strtolower($this->returnType)) {
             case '':
             case 'void':
                 return;
@@ -153,31 +131,27 @@ final class Invocation implements SelfDescribing
             case 'array':
                 return [];
 
-            case 'static':
-                return (new Instantiator)->instantiate(get_class($this->object));
-
             case 'object':
-                return new stdClass;
+                return new \stdClass;
 
             case 'callable':
             case 'closure':
-                return static function (): void {
+                return function (): void {
                 };
 
             case 'traversable':
             case 'generator':
             case 'iterable':
-                $generator = static function (): \Generator {
+                $generator = static function () {
                     yield;
                 };
 
                 return $generator();
 
-            case 'mixed':
-                return null;
-
             default:
-                return (new Generator)->getMock($this->returnType, [], [], '', false);
+                $generator = new Generator;
+
+                return $generator->getMock($this->returnType, [], [], '', false);
         }
     }
 
@@ -185,18 +159,18 @@ final class Invocation implements SelfDescribing
     {
         $exporter = new Exporter;
 
-        return sprintf(
+        return \sprintf(
             '%s::%s(%s)%s',
             $this->className,
             $this->methodName,
-            implode(
+            \implode(
                 ', ',
-                array_map(
+                \array_map(
                     [$exporter, 'shortenedExport'],
                     $this->parameters
                 )
             ),
-            $this->returnType ? sprintf(': %s', $this->returnType) : ''
+            $this->returnType ? \sprintf(': %s', $this->returnType) : ''
         );
     }
 

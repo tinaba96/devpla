@@ -12,7 +12,7 @@ class MySqlGrammar extends Grammar
     /**
      * The possible column modifiers.
      *
-     * @var string[]
+     * @var array
      */
     protected $modifiers = [
         'Unsigned', 'Charset', 'Collate', 'VirtualAs', 'StoredAs', 'Nullable',
@@ -22,7 +22,7 @@ class MySqlGrammar extends Grammar
     /**
      * The possible column serials.
      *
-     * @var string[]
+     * @var array
      */
     protected $serials = ['bigInteger', 'integer', 'mediumInteger', 'smallInteger', 'tinyInteger'];
 
@@ -52,7 +52,7 @@ class MySqlGrammar extends Grammar
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
      * @param  \Illuminate\Database\Connection  $connection
-     * @return array
+     * @return string
      */
     public function compileCreate(Blueprint $blueprint, Fluent $command, Connection $connection)
     {
@@ -70,9 +70,9 @@ class MySqlGrammar extends Grammar
         // Finally, we will append the engine configuration onto this SQL statement as
         // the final thing we do before returning this finished SQL. Once this gets
         // added the query will be ready to execute against the real connections.
-        return array_values(array_filter(array_merge([$this->compileCreateEngine(
+        return $this->compileCreateEngine(
             $sql, $connection, $blueprint
-        )], $this->compileAutoIncrementStartingValues($blueprint))));
+        );
     }
 
     /**
@@ -81,15 +81,15 @@ class MySqlGrammar extends Grammar
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
      * @param  \Illuminate\Database\Connection  $connection
-     * @return array
+     * @return string
      */
     protected function compileCreateTable($blueprint, $command, $connection)
     {
-        return trim(sprintf('%s table %s (%s)',
+        return sprintf('%s table %s (%s)',
             $blueprint->temporary ? 'create temporary' : 'create',
             $this->wrapTable($blueprint),
             implode(', ', $this->getColumns($blueprint))
-        ));
+        );
     }
 
     /**
@@ -147,29 +147,13 @@ class MySqlGrammar extends Grammar
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
-     * @return array
+     * @return string
      */
     public function compileAdd(Blueprint $blueprint, Fluent $command)
     {
         $columns = $this->prefixArray('add', $this->getColumns($blueprint));
 
-        return array_values(array_merge(
-            ['alter table '.$this->wrapTable($blueprint).' '.implode(', ', $columns)],
-            $this->compileAutoIncrementStartingValues($blueprint)
-        ));
-    }
-
-    /**
-     * Compile the auto incrementing column starting values.
-     *
-     * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
-     * @return array
-     */
-    public function compileAutoIncrementStartingValues(Blueprint $blueprint)
-    {
-        return collect($blueprint->autoIncrementingStartingValues())->map(function ($value, $column) use ($blueprint) {
-            return 'alter table '.$this->wrapTable($blueprint->getTable()).' auto_increment = '.$value;
-        })->all();
+        return 'alter table '.$this->wrapTable($blueprint).' '.implode(', ', $columns);
     }
 
     /**

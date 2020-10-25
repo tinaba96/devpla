@@ -4,8 +4,6 @@ namespace Illuminate\View;
 
 use Closure;
 use Illuminate\Container\Container;
-use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Contracts\View\View as ViewContract;
 use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionMethod;
@@ -51,24 +49,20 @@ abstract class Component
     /**
      * Get the view / view contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\Support\Htmlable|\Closure|string
+     * @return \Illuminate\View\View|\Closure|string
      */
     abstract public function render();
 
     /**
      * Resolve the Blade view or view file that should be used when rendering the component.
      *
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\Support\Htmlable|\Closure|string
+     * @return \Illuminate\View\View|\Closure|string
      */
     public function resolveView()
     {
         $view = $this->render();
 
-        if ($view instanceof ViewContract) {
-            return $view;
-        }
-
-        if ($view instanceof Htmlable) {
+        if ($view instanceof View) {
             return $view;
         }
 
@@ -100,7 +94,7 @@ abstract class Component
             $directory = Container::getInstance()['config']->get('view.compiled')
         );
 
-        if (! is_file($viewFile = $directory.'/'.sha1($contents).'.blade.php')) {
+        if (! file_exists($viewFile = $directory.'/'.sha1($contents).'.blade.php')) {
             if (! is_dir($directory)) {
                 mkdir($directory, 0755, true);
             }

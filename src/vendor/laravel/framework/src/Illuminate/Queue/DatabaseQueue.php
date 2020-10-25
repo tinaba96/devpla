@@ -2,7 +2,6 @@
 
 namespace Illuminate\Queue;
 
-use Illuminate\Contracts\Queue\ClearableQueue;
 use Illuminate\Contracts\Queue\Queue as QueueContract;
 use Illuminate\Database\Connection;
 use Illuminate\Queue\Jobs\DatabaseJob;
@@ -10,7 +9,7 @@ use Illuminate\Queue\Jobs\DatabaseJobRecord;
 use Illuminate\Support\Carbon;
 use PDO;
 
-class DatabaseQueue extends Queue implements QueueContract, ClearableQueue
+class DatabaseQueue extends Queue implements QueueContract
 {
     /**
      * The database connection instance.
@@ -320,38 +319,6 @@ class DatabaseQueue extends Queue implements QueueContract, ClearableQueue
                 $this->database->table($this->table)->where('id', $id)->delete();
             }
         });
-    }
-
-    /**
-     * Delete a reserved job from the reserved queue and release it.
-     *
-     * @param  string  $queue
-     * @param  \Illuminate\Queue\Jobs\DatabaseJob  $job
-     * @param  int  $delay
-     * @return void
-     */
-    public function deleteAndRelease($queue, $job, $delay)
-    {
-        $this->database->transaction(function () use ($queue, $job, $delay) {
-            if ($this->database->table($this->table)->lockForUpdate()->find($job->getJobId())) {
-                $this->database->table($this->table)->where('id', $job->getJobId())->delete();
-            }
-
-            $this->release($queue, $job->getJobRecord(), $delay);
-        });
-    }
-
-    /**
-     * Delete all of the jobs from the queue.
-     *
-     * @param  string  $queue
-     * @return int
-     */
-    public function clear($queue)
-    {
-        return $this->database->table($this->table)
-                    ->where('queue', $this->getQueue($queue))
-                    ->delete();
     }
 
     /**

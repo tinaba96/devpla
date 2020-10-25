@@ -9,15 +9,12 @@
  */
 namespace PHPUnit\Framework;
 
-use Throwable;
-
 /**
  * @deprecated The `TestListener` interface is deprecated
- * @no-named-arguments Parameter names are not covered by the backward compatibility promise for PHPUnit
  */
 trait TestListenerDefaultImplementation
 {
-    public function addError(Test $test, Throwable $t, float $time): void
+    public function addError(Test $test, \Throwable $t, float $time): void
     {
     }
 
@@ -29,15 +26,15 @@ trait TestListenerDefaultImplementation
     {
     }
 
-    public function addIncompleteTest(Test $test, Throwable $t, float $time): void
+    public function addIncompleteTest(Test $test, \Throwable $t, float $time): void
     {
     }
 
-    public function addRiskyTest(Test $test, Throwable $t, float $time): void
+    public function addRiskyTest(Test $test, \Throwable $t, float $time): void
     {
     }
 
-    public function addSkippedTest(Test $test, Throwable $t, float $time): void
+    public function addSkippedTest(Test $test, \Throwable $t, float $time): void
     {
     }
 

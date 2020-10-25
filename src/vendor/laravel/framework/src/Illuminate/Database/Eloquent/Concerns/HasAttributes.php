@@ -7,7 +7,6 @@ use DateTimeInterface;
 use Illuminate\Contracts\Database\Eloquent\Castable;
 use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
 use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Database\Eloquent\InvalidCastException;
 use Illuminate\Database\Eloquent\JsonEncodingException;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
@@ -15,7 +14,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection as BaseCollection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
-use InvalidArgumentException;
 use LogicException;
 
 trait HasAttributes
@@ -58,7 +56,7 @@ trait HasAttributes
     /**
      * The built-in, primitive cast types supported by Eloquent.
      *
-     * @var string[]
+     * @var array
      */
     protected static $primitiveCastTypes = [
         'array',
@@ -82,8 +80,6 @@ trait HasAttributes
 
     /**
      * The attributes that should be mutated to dates.
-     *
-     * @deprecated Use the "casts" property
      *
      * @var array
      */
@@ -238,10 +234,6 @@ trait HasAttributes
             if ($attributes[$key] && $attributes[$key] instanceof DateTimeInterface &&
                 $this->isClassCastable($key)) {
                 $attributes[$key] = $this->serializeDate($attributes[$key]);
-            }
-
-            if ($attributes[$key] && $this->isClassSerializable($key)) {
-                $attributes[$key] = $this->serializeClassCastableAttribute($key, $attributes[$key]);
             }
 
             if ($attributes[$key] instanceof Arrayable) {
@@ -609,20 +601,6 @@ trait HasAttributes
     }
 
     /**
-     * Serialize the given attribute using the custom cast class.
-     *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @return mixed
-     */
-    protected function serializeClassCastableAttribute($key, $value)
-    {
-        return $this->resolveCasterClass($key)->serialize(
-            $this, $key, $value, $this->attributes
-        );
-    }
-
-    /**
      * Determine if the cast type is a custom date time cast.
      *
      * @param  string  $cast
@@ -722,7 +700,7 @@ trait HasAttributes
     protected function isDateAttribute($key)
     {
         return in_array($key, $this->getDates(), true) ||
-               $this->isDateCastable($key);
+                                    $this->isDateCastable($key);
     }
 
     /**
@@ -934,13 +912,11 @@ trait HasAttributes
         // Finally, we will just assume this date is in the format used by default on
         // the database connection and use that format to create the Carbon object
         // that is returned back out to the developers after we convert it here.
-        try {
-            $date = Date::createFromFormat($format, $value);
-        } catch (InvalidArgumentException $e) {
-            $date = false;
+        if (Date::hasFormat($value, $format)) {
+            return Date::createFromFormat($format, $value);
         }
 
-        return $date ?: Date::parse($value);
+        return Date::parse($value);
     }
 
     /**
@@ -1091,35 +1067,9 @@ trait HasAttributes
      */
     protected function isClassCastable($key)
     {
-        if (! array_key_exists($key, $this->getCasts())) {
-            return false;
-        }
-
-        $castType = $this->parseCasterClass($this->getCasts()[$key]);
-
-        if (in_array($castType, static::$primitiveCastTypes)) {
-            return false;
-        }
-
-        if (class_exists($castType)) {
-            return true;
-        }
-
-        throw new InvalidCastException($this->getModel(), $key, $castType);
-    }
-
-    /**
-     * Determine if the key is serializable using a custom class.
-     *
-     * @param  string  $key
-     * @return bool
-     *
-     * @throws \Illuminate\Database\Eloquent\InvalidCastException
-     */
-    protected function isClassSerializable($key)
-    {
-        return $this->isClassCastable($key) &&
-               method_exists($this->parseCasterClass($this->getCasts()[$key]), 'serialize');
+        return array_key_exists($key, $this->getCasts()) &&
+                class_exists($class = $this->parseCasterClass($this->getCasts()[$key])) &&
+                ! in_array($class, static::$primitiveCastTypes);
     }
 
     /**
@@ -1142,7 +1092,7 @@ trait HasAttributes
         }
 
         if (is_subclass_of($castType, Castable::class)) {
-            $castType = $castType::castUsing($arguments);
+            $castType = $castType::castUsing();
         }
 
         if (is_object($castType)) {

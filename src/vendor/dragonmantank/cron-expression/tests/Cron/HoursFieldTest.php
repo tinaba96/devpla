@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Cron\Tests;
 
 use Cron\HoursField;
@@ -25,7 +23,16 @@ class HoursFieldTest extends TestCase
         $this->assertTrue($f->validate('01'));
         $this->assertTrue($f->validate('*'));
         $this->assertFalse($f->validate('*/3,1,1-12'));
-        $this->assertFalse($f->validate('1/10'));
+    }
+
+    /**
+     * @covers \Cron\HoursField::isSatisfiedBy
+     */
+    public function testChecksIfSatisfied()
+    {
+        $f = new HoursField();
+        $this->assertTrue($f->isSatisfiedBy(new DateTime(), '?'));
+        $this->assertTrue($f->isSatisfiedBy(new DateTimeImmutable(), '?'));
     }
 
     /**

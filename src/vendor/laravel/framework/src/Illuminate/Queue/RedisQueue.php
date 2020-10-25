@@ -2,13 +2,12 @@
 
 namespace Illuminate\Queue;
 
-use Illuminate\Contracts\Queue\ClearableQueue;
 use Illuminate\Contracts\Queue\Queue as QueueContract;
 use Illuminate\Contracts\Redis\Factory as Redis;
 use Illuminate\Queue\Jobs\RedisJob;
 use Illuminate\Support\Str;
 
-class RedisQueue extends Queue implements QueueContract, ClearableQueue
+class RedisQueue extends Queue implements QueueContract
 {
     /**
      * The Redis factory implementation.
@@ -77,25 +76,6 @@ class RedisQueue extends Queue implements QueueContract, ClearableQueue
         return $this->getConnection()->eval(
             LuaScripts::size(), 3, $queue, $queue.':delayed', $queue.':reserved'
         );
-    }
-
-    /**
-     * Push an array of jobs onto the queue.
-     *
-     * @param  array  $jobs
-     * @param  mixed  $data
-     * @param  string|null  $queue
-     * @return void
-     */
-    public function bulk($jobs, $data = '', $queue = null)
-    {
-        $this->getConnection()->pipeline(function () use ($jobs, $data, $queue) {
-            $this->getConnection()->transaction(function () use ($jobs, $data, $queue) {
-                foreach ((array) $jobs as $job) {
-                    $this->push($job, $data, $queue);
-                }
-            });
-        });
     }
 
     /**
@@ -284,22 +264,6 @@ class RedisQueue extends Queue implements QueueContract, ClearableQueue
         $this->getConnection()->eval(
             LuaScripts::release(), 2, $queue.':delayed', $queue.':reserved',
             $job->getReservedJob(), $this->availableAt($delay)
-        );
-    }
-
-    /**
-     * Delete all of the jobs from the queue.
-     *
-     * @param  string  $queue
-     * @return int
-     */
-    public function clear($queue)
-    {
-        $queue = $this->getQueue($queue);
-
-        return $this->getConnection()->eval(
-            LuaScripts::clear(), 4, $queue, $queue.':delayed',
-            $queue.':reserved', $queue.':notify'
         );
     }
 

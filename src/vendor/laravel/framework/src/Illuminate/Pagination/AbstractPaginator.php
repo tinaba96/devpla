@@ -112,14 +112,14 @@ abstract class AbstractPaginator implements Htmlable
      *
      * @var string
      */
-    public static $defaultView = 'pagination::tailwind';
+    public static $defaultView = 'pagination::bootstrap-4';
 
     /**
      * The default "simple" pagination view.
      *
      * @var string
      */
-    public static $defaultSimpleView = 'pagination::simple-tailwind';
+    public static $defaultSimpleView = 'pagination::simple-bootstrap-4';
 
     /**
      * Determine if the given value is a valid page number.
@@ -333,19 +333,6 @@ abstract class AbstractPaginator implements Htmlable
     public function lastItem()
     {
         return count($this->items) > 0 ? $this->firstItem() + $this->count() - 1 : null;
-    }
-
-    /**
-     * Transform each item in the slice of items using a callback.
-     *
-     * @param  callable  $callback
-     * @return $this
-     */
-    public function through(callable $callback)
-    {
-        $this->items->transform($callback);
-
-        return $this;
     }
 
     /**
@@ -574,17 +561,6 @@ abstract class AbstractPaginator implements Htmlable
     {
         static::defaultView('pagination::tailwind');
         static::defaultSimpleView('pagination::simple-tailwind');
-    }
-
-    /**
-     * Indicate that Bootstrap 4 styling should be used for generated links.
-     *
-     * @return void
-     */
-    public static function useBootstrap()
-    {
-        static::defaultView('pagination::bootstrap-4');
-        static::defaultSimpleView('pagination::simple-bootstrap-4');
     }
 
     /**

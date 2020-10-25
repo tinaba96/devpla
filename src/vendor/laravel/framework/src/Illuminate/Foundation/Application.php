@@ -33,7 +33,7 @@ class Application extends Container implements ApplicationContract, CachesConfig
      *
      * @var string
      */
-    const VERSION = '8.10.0';
+    const VERSION = '7.28.4';
 
     /**
      * The base path for the Laravel installation.
@@ -150,7 +150,7 @@ class Application extends Container implements ApplicationContract, CachesConfig
     /**
      * The prefixes of absolute cache paths for use during normalization.
      *
-     * @var string[]
+     * @var array
      */
     protected $absoluteCachePathPrefixes = ['/', '\\'];
 
@@ -859,17 +859,13 @@ class Application extends Container implements ApplicationContract, CachesConfig
      * Boot the given service provider.
      *
      * @param  \Illuminate\Support\ServiceProvider  $provider
-     * @return void
+     * @return mixed
      */
     protected function bootProvider(ServiceProvider $provider)
     {
-        $provider->callBootingCallbacks();
-
         if (method_exists($provider, 'boot')) {
-            $this->call([$provider, 'boot']);
+            return $this->call([$provider, 'boot']);
         }
-
-        $provider->callBootedCallbacks();
     }
 
     /**
@@ -957,7 +953,7 @@ class Application extends Container implements ApplicationContract, CachesConfig
      */
     public function configurationIsCached()
     {
-        return is_file($this->getCachedConfigPath());
+        return file_exists($this->getCachedConfigPath());
     }
 
     /**
@@ -1048,7 +1044,7 @@ class Application extends Container implements ApplicationContract, CachesConfig
      */
     public function isDownForMaintenance()
     {
-        return is_file($this->storagePath().'/framework/down');
+        return file_exists($this->storagePath().'/framework/down');
     }
 
     /**

@@ -50,21 +50,15 @@ class Response implements ArrayAccess
     /**
      * Get the JSON decoded body of the response as an array or scalar value.
      *
-     * @param  string|null  $key
-     * @param  mixed  $default
      * @return mixed
      */
-    public function json($key = null, $default = null)
+    public function json()
     {
         if (! $this->decoded) {
             $this->decoded = json_decode($this->body(), true);
         }
 
-        if (is_null($key)) {
-            return $this->decoded;
-        }
-
-        return data_get($this->decoded, $key, $default);
+        return $this->decoded;
     }
 
     /**
@@ -181,21 +175,6 @@ class Response implements ArrayAccess
     }
 
     /**
-     * Execute the given callback if there was a server or client error.
-     *
-     * @param  \Closure|callable $callback
-     * @return $this
-     */
-    public function onError(callable $callback)
-    {
-        if ($this->failed()) {
-            $callback($this);
-        }
-
-        return $this;
-    }
-
-    /**
      * Get the response cookies.
      *
      * @return \GuzzleHttp\Cookie\CookieJar
@@ -218,21 +197,14 @@ class Response implements ArrayAccess
     /**
      * Throw an exception if a server or client error occurred.
      *
-     * @param  \Closure|null  $callback
      * @return $this
      *
      * @throws \Illuminate\Http\Client\RequestException
      */
     public function throw()
     {
-        $callback = func_get_args()[0] ?? null;
-
-        if ($this->failed()) {
-            throw tap(new RequestException($this), function ($exception) use ($callback) {
-                if ($callback && is_callable($callback)) {
-                    $callback($this, $exception);
-                }
-            });
+        if ($this->serverError() || $this->clientError()) {
+            throw new RequestException($this);
         }
 
         return $this;

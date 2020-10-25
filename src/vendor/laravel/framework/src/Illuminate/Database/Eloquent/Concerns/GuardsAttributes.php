@@ -9,14 +9,14 @@ trait GuardsAttributes
     /**
      * The attributes that are mass assignable.
      *
-     * @var string[]
+     * @var array
      */
     protected $fillable = [];
 
     /**
      * The attributes that aren't mass assignable.
      *
-     * @var string[]|bool
+     * @var array
      */
     protected $guarded = ['*'];
 
@@ -77,9 +77,7 @@ trait GuardsAttributes
      */
     public function getGuarded()
     {
-        return $this->guarded === false
-                    ? []
-                    : $this->guarded;
+        return $this->guarded;
     }
 
     /**

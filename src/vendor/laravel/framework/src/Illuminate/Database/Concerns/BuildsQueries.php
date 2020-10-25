@@ -83,8 +83,6 @@ trait BuildsQueries
 
         $lastId = null;
 
-        $page = 1;
-
         do {
             $clone = clone $this;
 
@@ -102,15 +100,13 @@ trait BuildsQueries
             // On each chunk result set, we will pass them to the callback and then let the
             // developer take care of everything within the callback, which allows us to
             // keep the memory low for spinning through large result sets for working.
-            if ($callback($results, $page) === false) {
+            if ($callback($results) === false) {
                 return false;
             }
 
             $lastId = $results->last()->{$alias};
 
             unset($results);
-
-            $page++;
         } while ($countResults == $count);
 
         return true;
@@ -127,9 +123,9 @@ trait BuildsQueries
      */
     public function eachById(callable $callback, $count = 1000, $column = null, $alias = null)
     {
-        return $this->chunkById($count, function ($results, $page) use ($callback, $count) {
+        return $this->chunkById($count, function ($results) use ($callback) {
             foreach ($results as $key => $value) {
-                if ($callback($value, (($page - 1) * $count) + $key) === false) {
+                if ($callback($value, $key) === false) {
                     return false;
                 }
             }

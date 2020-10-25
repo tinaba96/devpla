@@ -276,7 +276,7 @@ trait ManagesFrequencies
      */
     public function weekdays()
     {
-        return $this->days('1-5');
+        return $this->spliceIntoPosition(5, '1-5');
     }
 
     /**
@@ -286,7 +286,7 @@ trait ManagesFrequencies
      */
     public function weekends()
     {
-        return $this->days('0,6');
+        return $this->spliceIntoPosition(5, '0,6');
     }
 
     /**
@@ -374,15 +374,15 @@ trait ManagesFrequencies
     /**
      * Schedule the event to run weekly on a given day and time.
      *
-     * @param  int  $dayOfWeek
+     * @param  int  $day
      * @param  string  $time
      * @return $this
      */
-    public function weeklyOn($dayOfWeek, $time = '0:0')
+    public function weeklyOn($day, $time = '0:0')
     {
         $this->dailyAt($time);
 
-        return $this->days($dayOfWeek);
+        return $this->spliceIntoPosition(5, $day);
     }
 
     /**
@@ -400,15 +400,15 @@ trait ManagesFrequencies
     /**
      * Schedule the event to run monthly on a given day and time.
      *
-     * @param  int  $dayOfMonth
+     * @param  int  $day
      * @param  string  $time
      * @return $this
      */
-    public function monthlyOn($dayOfMonth = 1, $time = '0:0')
+    public function monthlyOn($day = 1, $time = '0:0')
     {
         $this->dailyAt($time);
 
-        return $this->spliceIntoPosition(3, $dayOfMonth);
+        return $this->spliceIntoPosition(3, $day);
     }
 
     /**
@@ -421,13 +421,13 @@ trait ManagesFrequencies
      */
     public function twiceMonthly($first = 1, $second = 16, $time = '0:0')
     {
-        $daysOfMonth = $first.','.$second;
+        $days = $first.','.$second;
 
         $this->dailyAt($time);
 
         return $this->spliceIntoPosition(1, 0)
             ->spliceIntoPosition(2, 0)
-            ->spliceIntoPosition(3, $daysOfMonth);
+            ->spliceIntoPosition(3, $days);
     }
 
     /**
@@ -467,22 +467,6 @@ trait ManagesFrequencies
                     ->spliceIntoPosition(2, 0)
                     ->spliceIntoPosition(3, 1)
                     ->spliceIntoPosition(4, 1);
-    }
-
-    /**
-     * Schedule the event to run yearly on a given month, day, and time.
-     *
-     * @param  int  $month
-     * @param  int|string  $dayOfMonth
-     * @param  string  $time
-     * @return $this
-     */
-    public function yearlyOn($month = 1, $dayOfMonth = 1, $time = '0:0')
-    {
-        $this->dailyAt($time);
-
-        return $this->spliceIntoPosition(3, $dayOfMonth)
-                    ->spliceIntoPosition(4, $month);
     }
 
     /**

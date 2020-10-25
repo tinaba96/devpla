@@ -122,20 +122,6 @@ class PendingDispatch
     }
 
     /**
-     * Dynamically proxy methods to the underlying job.
-     *
-     * @param  string  $method
-     * @param  array  $parameters
-     * @return $this
-     */
-    public function __call($method, $parameters)
-    {
-        $this->job->{$method}(...$parameters);
-
-        return $this;
-    }
-
-    /**
      * Handle the object's destruction.
      *
      * @return void
