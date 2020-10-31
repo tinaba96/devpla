@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Laravel BBS</title>
+    <title>DevPla</title>
 
     <link
         rel="stylesheet"
@@ -15,7 +15,7 @@
     <header class="navbar navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ url('') }}">
-                Laravel BBS
+                DevPla
             </a>
         </div>
     </header>

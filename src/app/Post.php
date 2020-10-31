@@ -11,6 +11,13 @@ class Post extends Model
         'body',
     ];
 
+    protected $dates = [
+        'traded_day', //追加する。
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
     public function user()
     {
     }

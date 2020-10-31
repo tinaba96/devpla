@@ -16,12 +16,6 @@
                     <span class="mr-2">
                         投稿日時 {{ $post->created_at->format('Y.m.d') }}
                     </span>
-
-                    @if ($post->comments->count())
-                        <span class="badge badge-primary">
-                            コメント {{ $post->comments->count() }}件
-                        </span>
-                    @endif
                 </div>
             </div>
         @endforeach

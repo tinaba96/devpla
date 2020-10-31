@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Post;
@@ -19,8 +20,10 @@ class PostsTableSeeder extends Seeder
 
         DB::table('posts')->insert([
             'user_id' => $user->id, // ★
-            'title' =>  'タイトル。',
-            'body' => 'テキスト。テキスト。テキスト。テキスト。テキスト。',
+            'title' =>  'おらおらおろあおらおろあおらおらおろあおらおr',
+            'body' => 'よーーーーーーーーーーーーーーーーーーー',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
           ]);
     
     }
