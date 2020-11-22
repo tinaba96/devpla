@@ -21,11 +21,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'PostsController@index')->name('posts.index');
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 //投稿フォームページ
 Route::group(['middleware' => 'auth'], function() {
+
+    Route::get('/', 'PostsController@index')->name('posts.index');
+    Route::get('/home', 'HomeController@index')->name('home');
+
     Route::get('/post', 'PostsController@showCreateForm')->name('posts.create');
     Route::post('/post', 'PostsController@create');
 
@@ -43,6 +46,5 @@ Route::group(['middleware' => 'auth'], function() {
 
 
 
-Auth::routes();
 
 

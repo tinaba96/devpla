@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-4">
-        <div class="border p-4">
+        <div class="border p-4 newd">
             <h1 class="h5 mb-4">
                 投稿の新規作成
             </h1>

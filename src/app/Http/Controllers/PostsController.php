@@ -6,21 +6,20 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 
-class PostsController extends Controller
-{
-
+class PostsController extends Controller{
     //投稿一覧ページを表示する。
+
     public function index()
     {
+    $posts = Auth::user()->posts()->get();
     $posts = Post::orderBy('created_at', 'desc')->get();
-
     return view('posts.index', ['posts' => $posts]);
     }
 
     //投稿作成ページを表示する。
     public function showCreateForm()
     {
-        return view('posts/create');
+        return view('posts.create');
     }
 
     //投稿作成処理を実行する。

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-4">
-        <div class="border p-4">
+        <div class="border p-4 newd">
             <h1 class="h5 mb-4">
                 投稿の編集
             </h1>
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="mt-5">
-                        <a class="btn btn-secondary" href="{{ route('posts.show', ['post_id' => 1]) }}">
+                        <a class="btn btn-secondary" href="{{ route('posts.show', ['post_id' =>$post ]) }}">
                             キャンセル
                         </a>
 
