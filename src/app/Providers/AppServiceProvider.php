@@ -24,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+      // グローバル変数
+      // 管理者のID番号を1とする
+      // 参照: https://stackoverflow.com/questions/28356193/
+      config(['admin_id' => 1]);
       Schema::defaultStringLength(191);
     }
 }

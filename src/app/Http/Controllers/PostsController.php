@@ -11,9 +11,10 @@ class PostsController extends Controller{
 
     public function index()
     {
-    $posts = Auth::user()->posts()->get();
-    $posts = Post::orderBy('created_at', 'desc')->get();
-    return view('posts.index', ['posts' => $posts]);
+        // $posts = Auth::user()->posts()->orderBy('created_at', 'desc')->get();
+        $posts = Auth::user()->posts()->get();
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('posts.index', ['posts' => $posts]);
     }
 
     //投稿作成ページを表示する。
@@ -47,7 +48,7 @@ class PostsController extends Controller{
     //投稿編集ページを表示する。
     public function showEditForm($post_id)
     {
-
+        // $post = Auth::user()->post($post_id)->get();
         $post = Post::findOrFail($post_id);
         return view('posts.edit', [
             'post' => $post,
@@ -55,7 +56,7 @@ class PostsController extends Controller{
     }
 
     //投稿編集処理を実行する。
-    public function update($post_id, Request $request)
+    function update($post_id, Request $request)
     {
         $post = Post::findOrFail($post_id);
         $post->title = $request->title;
@@ -64,14 +65,29 @@ class PostsController extends Controller{
         //登録ユーザーからidを取得
         $post->user_id = Auth::user()->id;
         $post->save();
-    
         return redirect()->route('posts.show', ['post_id' => $post->id]);
     }
+
+    
+    // public function update(Request $request, Post $post)
+    // {
+    //     $this->authorize('edit', $post);
+
+    //     $post->title = $request->title;
+    //     //コンテンツ
+    //     $post->body = $request->body;
+    //     //登録ユーザーからidを取得
+    //     $post->user_id = Auth::user()->id;
+    //     $post->save();
+    
+    //     return redirect()->route('posts.show', ['post_id' => $post->id]);
+    // }
 
     //投稿詳細ページを表示する。
     public function show($post_id)
     {
     $post = Post::findOrFail($post_id);
+    // $post = Auth::user()->post($post_id)->get();
 
     return view('posts.show', [
         'post' => $post,
@@ -81,12 +97,9 @@ class PostsController extends Controller{
     //投稿削除処理を実行する。
     public function destroy($post_id)
     {
-    $post = Post::findOrFail($post_id);
-
-    \DB::transaction(function () use ($post) {
-
+        $post = \App\Post::find($post_id);
+        //削除
         $post->delete();
-    });
 
     return redirect()->route('posts.index');
     }

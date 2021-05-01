@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">
-                            {!! nl2br(e(Str::limit($post->body, 200))) !!} 
+                            {!! nl2br(Str::limit($post->body, 200)) !!} 
                         </p>
                         <a class="card-link" href="{{ route('posts.show', ['post_id' => $post]) }}">
                             続きを読む
@@ -25,6 +25,11 @@
                         <span class="mr-2">
                             投稿日時 {{ $post->created_at->format('Y.m.d') }}
                         </span>
+                        @if ($post->comments->count())
+                            <span class="badge badge-primary">
+                                コメント {{ $post->comments->count() }}件
+                            </span>
+                        @endif
                     </div>
                 </div>
             </div>   
