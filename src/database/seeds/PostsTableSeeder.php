@@ -26,5 +26,6 @@ class PostsTableSeeder extends Seeder
             'updated_at' => Carbon::now(),
           ]);
     
+
     }
 }

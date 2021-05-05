@@ -12,6 +12,8 @@
     "devDependencies": {
         "axios": "^0.21.1",
         "bootstrap": "^4.0.0",
+        "browser-sync": "^2.26.14",
+        "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^7.0",
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
@@ -23,5 +25,8 @@
         "vue": "^2.6.12",
         "vue-template-compiler": "^2.6.10"
     },
-    "name": "app"
+    "name": "app",
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.2"
+    }
 }

@@ -43,6 +43,7 @@
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
+                                <a class="nav-link" href="{{ route('image_list') }}">写真一覧</a>
                             <!-- Authentication Links -->
                             @guest
                             <li class="nav-item">
