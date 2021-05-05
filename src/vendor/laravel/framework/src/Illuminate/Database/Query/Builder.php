@@ -709,7 +709,11 @@ class Builder
         );
 
         if (! $value instanceof Expression) {
+<<<<<<< HEAD
             $this->addBinding(is_array($value) ? head($value) : $value, 'where');
+=======
+            $this->addBinding($this->flattenValue($value), 'where');
+>>>>>>> origin/inaba
         }
 
         return $this;
@@ -1078,7 +1082,11 @@ class Builder
 
         $this->wheres[] = compact('type', 'column', 'values', 'boolean', 'not');
 
+<<<<<<< HEAD
         $this->addBinding(array_slice($this->cleanBindings($values), 0, 2), 'where');
+=======
+        $this->addBinding(array_slice($this->cleanBindings(Arr::flatten($values)), 0, 2), 'where');
+>>>>>>> origin/inaba
 
         return $this;
     }
@@ -1201,7 +1209,11 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
+<<<<<<< HEAD
         $value = is_array($value) ? head($value) : $value;
+=======
+        $value = $this->flattenValue($value);
+>>>>>>> origin/inaba
 
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('Y-m-d');
@@ -1242,7 +1254,11 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
+<<<<<<< HEAD
         $value = is_array($value) ? head($value) : $value;
+=======
+        $value = $this->flattenValue($value);
+>>>>>>> origin/inaba
 
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('H:i:s');
@@ -1283,7 +1299,11 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
+<<<<<<< HEAD
         $value = is_array($value) ? head($value) : $value;
+=======
+        $value = $this->flattenValue($value);
+>>>>>>> origin/inaba
 
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('d');
@@ -1328,7 +1348,11 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
+<<<<<<< HEAD
         $value = is_array($value) ? head($value) : $value;
+=======
+        $value = $this->flattenValue($value);
+>>>>>>> origin/inaba
 
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('m');
@@ -1373,7 +1397,11 @@ class Builder
             $value, $operator, func_num_args() === 2
         );
 
+<<<<<<< HEAD
         $value = is_array($value) ? head($value) : $value;
+=======
+        $value = $this->flattenValue($value);
+>>>>>>> origin/inaba
 
         if ($value instanceof DateTimeInterface) {
             $value = $value->format('Y');
@@ -1683,7 +1711,11 @@ class Builder
         $this->wheres[] = compact('type', 'column', 'operator', 'value', 'boolean');
 
         if (! $value instanceof Expression) {
+<<<<<<< HEAD
             $this->addBinding((int) $value);
+=======
+            $this->addBinding((int) $this->flattenValue($value));
+>>>>>>> origin/inaba
         }
 
         return $this;
@@ -1832,7 +1864,11 @@ class Builder
         $this->havings[] = compact('type', 'column', 'operator', 'value', 'boolean');
 
         if (! $value instanceof Expression) {
+<<<<<<< HEAD
             $this->addBinding(is_array($value) ? head($value) : $value, 'having');
+=======
+            $this->addBinding($this->flattenValue($value), 'having');
+>>>>>>> origin/inaba
         }
 
         return $this;
@@ -1870,7 +1906,7 @@ class Builder
 
         $this->havings[] = compact('type', 'column', 'values', 'boolean', 'not');
 
-        $this->addBinding($this->cleanBindings($values), 'having');
+        $this->addBinding(array_slice($this->cleanBindings(Arr::flatten($values)), 0, 2), 'having');
 
         return $this;
     }
@@ -3090,6 +3126,17 @@ class Builder
         return array_values(array_filter($bindings, function ($binding) {
             return ! $binding instanceof Expression;
         }));
+    }
+
+    /**
+     * Get a scalar type value from an unknown type of input.
+     *
+     * @param  mixed  $value
+     * @return mixed
+     */
+    protected function flattenValue($value)
+    {
+        return is_array($value) ? head(Arr::flatten($value)) : $value;
     }
 
     /**

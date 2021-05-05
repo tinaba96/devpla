@@ -3,8 +3,10 @@ FROM php:7.4-fpm
 COPY install-composer.sh /
 
 RUN apt-get update \
-  && apt-get install -y zlib1g-dev libzip-dev zip mariadb-client-10.3 libpng-dev libjpeg-dev curl wget \
-  && docker-php-ext-install zip pdo_mysql
+  && apt-get install -y zlib1g-dev libzip-dev zip mariadb-client-10.3 libpng-dev libfreetype6-dev libjpeg62-turbo-dev libpq-dev libjpeg-dev curl wget \
+  && docker-php-ext-install zip pdo_mysql\
+  && docker-php-ext-configure gd --with-freetype --with-jpeg \
+  && docker-php-ext-install -j$(nproc) gd 
 
 # nodejs install
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -

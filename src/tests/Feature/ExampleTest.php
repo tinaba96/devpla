@@ -16,6 +16,11 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
+<<<<<<< HEAD
         $response->assertStatus(302);  // ステータスコードを変更
+=======
+        $response->assertStatus(302);
+        #$response->assertStatus(200);
+>>>>>>> origin/inaba
     }
 }
