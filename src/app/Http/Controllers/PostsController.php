@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
+use App\Images;
 
 class PostsController extends Controller{
     //投稿一覧ページを表示する。
@@ -12,8 +13,14 @@ class PostsController extends Controller{
     public function index()
     {
     $posts = Auth::user()->posts()->get();
+    // $posts_i = Images::orderBy("created_at", "desc")->get();
     $posts = Post::orderBy('created_at', 'desc')->get();
-    return view('posts.index', ['posts' => $posts]);
+    //$uploads = Images::orderBy("id", "desc")->get();
+
+    $posts_i = Images::all();
+
+    //return view('posts.index', ['posts' => $posts]);
+    return view('posts.index', ['images' => $posts_i, "posts" => $posts]);
     }
 
     //投稿作成ページを表示する。
@@ -36,6 +43,27 @@ class PostsController extends Controller{
         // インスタンスの状態をデータベースに書き込む
         $post->save();
 
+    
+    if ($request -> file('image')){
+		$request->validate([
+			'image' => 'required|file|image|mimes:png,jpeg',
+		]);
+
+		$images = $request->file('image');
+
+		if($images) {
+			//saving uploaded image
+			$path = $images->store('uploads',"public");
+			//store in DB
+			if($path){
+				Images::create([
+					"file_name" => $images->getClientOriginalName(),
+					"file_path" => $path
+				]);
+			}
+    }
+    }
+
         // Auth::user()->posts()->save($post);
 
         //「投稿する」をクリックしたら投稿情報表示ページへリダイレクト        
@@ -45,7 +73,7 @@ class PostsController extends Controller{
     }
         
     //投稿編集ページを表示する。
-    public function showEditForm($post_id)
+    function showEditForm($post_id)
     {
 
         $post = Post::findOrFail($post_id);
@@ -55,7 +83,7 @@ class PostsController extends Controller{
     }
 
     //投稿編集処理を実行する。
-    public function update($post_id, Request $request)
+    function update($post_id, Request $request)
     {
         $post = Post::findOrFail($post_id);
         $post->title = $request->title;
@@ -69,7 +97,7 @@ class PostsController extends Controller{
     }
 
     //投稿詳細ページを表示する。
-    public function show($post_id)
+    function show($post_id)
     {
     $post = Post::findOrFail($post_id);
 
@@ -79,7 +107,7 @@ class PostsController extends Controller{
     }
 
     //投稿削除処理を実行する。
-    public function destroy($post_id)
+    function destroy($post_id)
     {
     $post = Post::findOrFail($post_id);
 
@@ -90,5 +118,43 @@ class PostsController extends Controller{
 
     return redirect()->route('posts.index');
     }
+
+
+
+	  function upload(Request $request){
+		$request->validate([
+			'image' => 'required|file|image|mimes:png,jpeg',
+		]);
+
+		$images = $request->file('image');
+
+		if($images) {
+			//saving uploaded image
+			$path = $images->store('uploads',"public");
+			//store in DB
+			if($path){
+				Images::create([
+					"file_name" => $images->getClientOriginalName(),
+					"file_path" => $path
+				]);
+			}
+		}
+		return redirect("/list");
+	}
+    
+    /*
+      function index(){
+      $images = \app\Images::all();
+      $posts = \app\Images::all();
+      $data = [
+        'images' => $images,
+      ];
+
+      #return view('welcome', ['images' => $posts]);
+      return view('welcome', data);
+    }
+     */
+
+
 
 }

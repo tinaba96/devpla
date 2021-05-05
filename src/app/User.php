@@ -42,4 +42,43 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Post');
     }
+
+
+
+    public function likes()
+    {
+	    return $this->belongsToMany('App\Post')->withTimestamps();
+	    //return $this->belongsToMany(Posts::class, 'likes', 'user_id')->withTimestamps();
+    }
+
+    public function like($post_id)
+    {
+	    $exist = $this->is_like($post_id);
+
+	    if ($exist){
+		    return false;
+	    }else{
+		    $this->likes()->attach($post_id);
+		    return true;
+	    }
+    }
+
+    public function unlike($post_id)
+    {
+	    $exist = $this->is_like($post_id);
+
+	    if($exist){
+		    $this->likes()->detach($post_id);
+		    return true;
+	    }else{
+		    return false;
+	    }
+    }
+
+    public function is_like($post_id)
+    {
+	    return $this->likes()->where('post_id'. $post_id)->exists();
+    }
+
 }
+

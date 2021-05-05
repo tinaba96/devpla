@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\User;
+use App\Images;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -24,5 +25,15 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
+    ];
+});
+
+$factory->define(Images::class, function (Faker $faker) {
+    return [
+        #'user_id' => $faker->numberBetween(1,3),
+        'file_name' => $faker->sentence(7,11),
+        'file_path' => $faker->sentence(7,11),
+        'created_at' => $faker->numberBetween(1,3),
+        'updated_at' => $faker->numberBetween(1,3),
     ];
 });

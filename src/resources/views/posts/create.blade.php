@@ -7,7 +7,7 @@
                 投稿の新規作成
             </h1>
 
-            <form method="POST" action="{{ route('posts.create') }}">
+            <form method="POST" action="{{ route('posts.create') }}" enctype="multipart/form-data">
                 @csrf
 
                 <fieldset class="mb-4">
@@ -27,6 +27,14 @@
                                 {{ $errors->first('title') }}
                             </div>
                         @endif
+
+
+
+
+
+
+
+
                     </div>
 
                     <div class="form-group">
@@ -45,7 +53,16 @@
                                 {{ $errors->first('body') }}
                             </div>
                         @endif
+                            <br>
+                            <p>画像を添付</p>
+			                  <input type="file" name="image" accept="image/png, image/jpeg"/>
+
                     </div>
+
+
+
+
+
 
                     <div class="mt-5">
                         <a class="btn btn-secondary" href="{{ route('posts.index') }}">
@@ -58,6 +75,32 @@
                     </div>
                 </fieldset>
             </form>
+		
+
+		@if (count($errors) > 0)
+		<div class="alert alert-danger">
+			<ul>
+				@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+		</ul>
+		</div>
+		@endif
+		<!-- <form 
+			method="post"
+			action="{{ route('upload_image') }}"
+			enctype="multipart/form-data"
+		>
+			@csrf
+			<input type="file" name="image" accept="image/png, image/jpeg"/>
+			<input type="submit" value="写真投稿">
+		</form> -->
+
+
+
+
+
+
         </div>
     </div>
 @endsection

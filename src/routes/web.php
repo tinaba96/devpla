@@ -41,7 +41,29 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::delete('/post/{post_id}', 'PostsController@destroy')->name('posts.destroy');
     
+    // //posting images
+    // Route::post('upload', 'ImagesController@upload')->name('upload');
+    // Route::get('/images/', 'ImagesController@index');
 
+
+    // Route::get('/form',
+	// [App\Http\Controllers\ImagesController::class, "show"]
+	// )->name("upload_form");
+
+    // Route::post('/uploads',
+	// [App\Http\Controllers\ImagesController::class, "upload"]
+	// )->name("upload_image");
+
+    Route::get('/list',
+	[App\Http\Controllers\ImageListController::class, "show"]
+	)->name("image_list");
+
+
+    Route::get('/home/like/{id}', 'LikeController@store')->name('like_home');
+    Route::get('/home/unlike/{id}', 'LikeController@destroy')->name('unlike_home');
+    
+    Route::post('/post/{post}/like', 'LikeController@store')->name('likes');
+    Route::post('/post/{post}/unlike', 'LikeController@destroy')->name('unlikes');
 });
 
 
