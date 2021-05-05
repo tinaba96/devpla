@@ -35,9 +35,9 @@
                         </label>
 
                         <textarea
-                            id="body"
+                            id="editor"
                             name="body"
-                            class="ckeditor form-control {{ $errors->has('body') ? 'is-invalid' : '' }}"
+                            class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}"
                             rows="4"
                         >{{ old('body') ?: ($post->body)}}</textarea>
                         @if ($errors->has('body'))

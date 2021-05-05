@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">
-                            {!! nl2br(Str::limit($post->body, 200)) !!} 
+                            {!! nl2br(Str::limit($post->body_html, 200)) !!} 
                         </p>
                         <a class="card-link" href="{{ route('posts.show', ['post_id' => $post]) }}">
                             続きを読む

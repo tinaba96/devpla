@@ -23,5 +23,8 @@
         "vue": "^2.6.12",
         "vue-template-compiler": "^2.6.10"
     },
-    "name": "app"
+    "name": "app",
+    "dependencies": {
+        "simplemde-extended": "^1.0.2"
+    }
 }

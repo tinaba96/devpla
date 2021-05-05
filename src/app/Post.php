@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use GrahamCampbell\Markdown\Facades\Markdown;
 
 class Post extends Model
 {
@@ -21,5 +22,11 @@ class Post extends Model
     {
         return $this->hasMany('App\Comment');
     }
+
+    public function getBodyHtmlAttribute($value)
+    {
+        return $this->body ? Markdown::convertToHtml(e($this->body)) : NULL;
+    }
+    //アクセサの中でエスケープ処理定義
 
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 
+
 class PostsController extends Controller{
     //投稿一覧ページを表示する。
 
@@ -88,6 +89,10 @@ class PostsController extends Controller{
     {
     $post = Post::findOrFail($post_id);
     // $post = Auth::user()->post($post_id)->get();
+
+    // $str = preg_replace("/\n/","++++",$post->body);
+    // $str = e($str);
+    // $str = preg_replace("++++","/\n/",$post->body);
 
     return view('posts.show', [
         'post' => $post,

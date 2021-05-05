@@ -27,7 +27,7 @@
 
 
             <p class="mb-5">
-                {!! nl2br(e($post->body)) !!}
+                {!! nl2br($post->body_html) !!}
             </p>
 
             <section>
