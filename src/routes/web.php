@@ -50,9 +50,9 @@ Route::group(['middleware' => 'auth'], function() {
 	// [App\Http\Controllers\ImagesController::class, "show"]
 	// )->name("upload_form");
 
-    // Route::post('/uploads',
-	// [App\Http\Controllers\ImagesController::class, "upload"]
-	// )->name("upload_image");
+    Route::post('/uploads',
+	[App\Http\Controllers\ImagesController::class, "upload"]
+	)->name("upload_image");
 
     Route::get('/list',
 	[App\Http\Controllers\ImageListController::class, "show"]

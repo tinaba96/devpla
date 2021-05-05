@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class ImagesController extends Controller
 {
+
 	function upload(Request $request){
 		$request->validate([
 			'image' => 'required|file|image|mimes:png,jpeg',
@@ -31,9 +32,6 @@ class ImagesController extends Controller
 		}
 		return redirect("/list");
 	}
-	function show(){
-		return view("image_list");
-	}
 
 	public function index(){
 		$images = \app\Images::all();
@@ -45,6 +43,7 @@ class ImagesController extends Controller
 		#return view('welcome', ['images' => $posts]);
 		return view('welcome', data);
 	}
+
 
 
 }
