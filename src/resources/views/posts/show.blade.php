@@ -35,7 +35,6 @@
             </p>
 
             <section>
-<<<<<<< HEAD
                 <h2 class="h5 mb-4">
                     コメント
                 </h2>
@@ -86,7 +85,6 @@
                     <p>コメントはまだありません。</p>
                 @endforelse
             </section>
-=======
 	    <div class="row justify-content-center">
                 @if ($post->users()->where('user_id', Auth::id())->exists())
                     <div class="col align-self-end">
@@ -104,7 +102,6 @@
 		    </div>
 @endif
 
->>>>>>> origin/inaba
 
         </div>
     </div>

@@ -21,7 +21,6 @@ class Post extends Model
         //return $this->belongsTo('App\User');
     }
 
-<<<<<<< HEAD
     public function comments()
     {
         return $this->hasMany('App\Comment');
@@ -33,12 +32,10 @@ class Post extends Model
     }
     //アクセサの中でエスケープ処理定義
 
-}
-=======
+
     public function favorite_users()
     {
 	    return $this->belongsToMany(User::class, 'likes', ' post_id', 'user_id')->withTimestamps();
     }
 
 }
->>>>>>> origin/inaba

@@ -4,11 +4,7 @@
 
 namespace Composer\Autoload;
 
-<<<<<<< HEAD
-class ComposerStaticInitb253a833be84815e2fafe8c4120e8a79
-=======
-class ComposerStaticInit0e8cb6119a00f1558d3520a3cb418920
->>>>>>> origin/inaba
+class ComposerStaticInitb58c2974d06ef77fdb54038073cd77a5
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -542,7 +538,7 @@ class ComposerStaticInit0e8cb6119a00f1558d3520a3cb418920
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\ImageListController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImageListController.php',
-        'App\\Http\\Controllers\\ImagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImagesController copy.php',
+        'App\\Http\\Controllers\\ImagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImagesController.php',
         'App\\Http\\Controllers\\LikeController' => __DIR__ . '/../..' . '/app/Http/Controllers/LikeController.php',
         'App\\Http\\Controllers\\PostsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostsController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -554,13 +550,10 @@ class ComposerStaticInit0e8cb6119a00f1558d3520a3cb418920
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-<<<<<<< HEAD
-        'App\\Policies\\PostPolicy' => __DIR__ . '/../..' . '/app/Policies/PostPolicy.php',
-        'App\\Policies\\UserPolicy' => __DIR__ . '/../..' . '/app/Policies/UserPolicy.php',
-=======
         'App\\Images' => __DIR__ . '/../..' . '/app/Images.php',
         'App\\Like' => __DIR__ . '/../..' . '/app/Like.php',
->>>>>>> origin/inaba
+        'App\\Policies\\PostPolicy' => __DIR__ . '/../..' . '/app/Policies/PostPolicy.php',
+        'App\\Policies\\UserPolicy' => __DIR__ . '/../..' . '/app/Policies/UserPolicy.php',
         'App\\Post' => __DIR__ . '/../..' . '/app/Post.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -1425,9 +1418,6 @@ class ComposerStaticInit0e8cb6119a00f1558d3520a3cb418920
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
-<<<<<<< HEAD
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-=======
         'Collective\\Html\\Componentable' => __DIR__ . '/..' . '/laravelcollective/html/src/Componentable.php',
         'Collective\\Html\\Eloquent\\FormAccessible' => __DIR__ . '/..' . '/laravelcollective/html/src/Eloquent/FormAccessible.php',
         'Collective\\Html\\FormBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/FormBuilder.php',
@@ -1435,7 +1425,7 @@ class ComposerStaticInit0e8cb6119a00f1558d3520a3cb418920
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
->>>>>>> origin/inaba
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',
@@ -5844,17 +5834,10 @@ class ComposerStaticInit0e8cb6119a00f1558d3520a3cb418920
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-<<<<<<< HEAD
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb253a833be84815e2fafe8c4120e8a79::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb253a833be84815e2fafe8c4120e8a79::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitb253a833be84815e2fafe8c4120e8a79::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitb253a833be84815e2fafe8c4120e8a79::$classMap;
-=======
-            $loader->prefixLengthsPsr4 = ComposerStaticInit0e8cb6119a00f1558d3520a3cb418920::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit0e8cb6119a00f1558d3520a3cb418920::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit0e8cb6119a00f1558d3520a3cb418920::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit0e8cb6119a00f1558d3520a3cb418920::$classMap;
->>>>>>> origin/inaba
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb58c2974d06ef77fdb54038073cd77a5::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb58c2974d06ef77fdb54038073cd77a5::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitb58c2974d06ef77fdb54038073cd77a5::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitb58c2974d06ef77fdb54038073cd77a5::$classMap;
 
         }, null, ClassLoader::class);
     }

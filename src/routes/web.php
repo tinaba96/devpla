@@ -43,11 +43,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::put('/post/{post_id}/edit', 'PostsController@update')->name('posts.update');
 
     Route::delete('/post/{post_id}', 'PostsController@destroy')->name('posts.destroy');
-<<<<<<< HEAD
 
     //コメント作成
     Route::post('/post/{post_id}', 'CommentsController@store')->name('comments.store');
-=======
     
     // //posting images
     // Route::post('upload', 'ImagesController@upload')->name('upload');
@@ -72,7 +70,6 @@ Route::group(['middleware' => 'auth'], function() {
     
     Route::post('/post/{post}/like', 'LikeController@store')->name('likes');
     Route::post('/post/{post}/unlike', 'LikeController@destroy')->name('unlikes');
->>>>>>> origin/inaba
 });
 
 
