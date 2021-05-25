@@ -35,7 +35,7 @@
                         </label>
 
                         <textarea
-                            id="editor"
+                            id="simplemde"
                             name="body"
                             class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}"
                             rows="4"

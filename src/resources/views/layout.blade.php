@@ -16,10 +16,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <link href="simplemde-with-emoji-picker-main/unicode-emoji-picker/css/emoji.css" rel="stylesheet">
+    <style>
+        .editor-toolbar:hover {
+            opacity: unset !important;
+        }
+
+        .editor-toolbar {
+            opacity: 1;
+        }
+
+        .emoji-menu {
+            top: 100%;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .emoji-menu {
+                left: 20px !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -86,9 +106,45 @@
     <div class ="d">
         @yield('content')
     </div>
-    <script>
-        var simpleMDE = new SimpleMDE({element: document.getElementById('editor')});
-    </script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script src="simplemde-with-emoji-picker-main/unicode-emoji-picker/js/config.js"></script>
+<script src="simplemde-with-emoji-picker-main/unicode-emoji-picker/js/emoji-picker.js"></script>
+
+<script>
+    var simplemde = new SimpleMDE({
+        element: document.getElementById("simplemde"),
+        spellChecker: false,
+        toolbar: ["bold", "italic", "heading", "|", "code", "quote", "link", "|", "unordered-list", "ordered-list", "table", "|", "preview", "side-by-side", "fullscreen", '|',
+            {
+                name: "emojiable",
+                action: function customFunction(editor) {
+                    $.triggerEmojiMenu()
+                },
+                className: "fa fa-smile-o",
+                title: "Emoji",
+            }]
+    });
+
+
+    $(function () {
+        window.emojiPicker = new EmojiPicker({
+            assetsPath: 'simplemde-with-emoji-picker-main/unicode-emoji-picker/img/',
+            triggerButton: $("#openEmoji"),
+            emojiMenuPlace: $(".editor-toolbar"),
+            dontHideOnClick: 'fa-smile-o',
+            emojiResult: function (res) {
+                var pos = simplemde.codemirror.getCursor();
+                simplemde.codemirror.setSelection(pos, pos);
+                simplemde.codemirror.replaceSelection(res.unicode);
+            }
+        });
+        window.emojiPicker.discover();
+
+        $('.emoji-menu').css('left', $("[title='Emoji']").offset().left - 20);
+    });
+
+</script>
     @if(Auth::check())
     <script>
         document.getElementById('logout').addEventListener('click', function(event) {
@@ -99,9 +155,4 @@
     @endif
     @yield('scripts')
 </body>
-<<<<<<< HEAD
-
 </html>
-=======
-</html>
->>>>>>> origin/inaba
