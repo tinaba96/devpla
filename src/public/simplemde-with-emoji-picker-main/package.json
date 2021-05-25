@@ -1,0 +1,43 @@
+{
+  "name": "simplemde-with-emoji-picker",
+  "title": "Simplemde With Emoji Picker",
+  "version": "1.0.0",
+  "description": "Add Emoji picker to simpleMDE",
+  "author": {
+    "name": "Mahdi Bashirpour",
+    "url": "https://bashirpour.ir/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bashirpour/simplemde-with-emoji-picker"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bashirpour/simplemde-with-emoji-picker/blob/main/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": "0.10.x"
+  },
+  "devDependencies": {
+
+  },
+  "homepage": "https://github.com/bashirpour/simplemde-with-emoji-picker",
+  "keywords": [
+    "emoji",
+    "jquery-emoji",
+    "textarea",
+    "input",
+    "emoticons",
+    "icons",
+    "jquery-plugin"
+  ],
+  "bugs": "https://github.com/bashirpour/simplemde-with-emoji-picker/issues",
+  "files": [
+    "lib",
+    "LICENSE",
+    "README.md",
+    "screenshot.png"
+  ]
+}

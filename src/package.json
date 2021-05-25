@@ -28,5 +28,7 @@
     "name": "app",
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.15.2"
+        "simplemde-extended": "^1.0.2"
+        "@fortawesome/fontawesome-free": "^5.15.2"
     }
 }

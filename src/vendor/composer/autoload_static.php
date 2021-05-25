@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita061568f6d321c357765cb8a1c5d2443
+class ComposerStaticInitea635689ce2c4c614f609f5db899f705
 {
     public static $files = array (
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -142,6 +142,7 @@ class ComposerStaticInita061568f6d321c357765cb8a1c5d2443
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+            'GrahamCampbell\\Markdown\\' => 24,
         ),
         'F' => 
         array (
@@ -423,6 +424,10 @@ class ComposerStaticInita061568f6d321c357765cb8a1c5d2443
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+        'GrahamCampbell\\Markdown\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/graham-campbell/markdown/src',
+        ),
         'Fruitcake\\Cors\\' => 
         array (
             0 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
@@ -520,6 +525,7 @@ class ComposerStaticInita061568f6d321c357765cb8a1c5d2443
     );
 
     public static $classMap = array (
+        'App\\Comment' => __DIR__ . '/../..' . '/app/Comment.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -528,6 +534,7 @@ class ComposerStaticInita061568f6d321c357765cb8a1c5d2443
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\CommentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommentsController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\ImageListController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImageListController.php',
@@ -545,6 +552,8 @@ class ComposerStaticInita061568f6d321c357765cb8a1c5d2443
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Images' => __DIR__ . '/../..' . '/app/Images.php',
         'App\\Like' => __DIR__ . '/../..' . '/app/Like.php',
+        'App\\Policies\\PostPolicy' => __DIR__ . '/../..' . '/app/Policies/PostPolicy.php',
+        'App\\Policies\\UserPolicy' => __DIR__ . '/../..' . '/app/Policies/UserPolicy.php',
         'App\\Post' => __DIR__ . '/../..' . '/app/Post.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -2181,6 +2190,13 @@ class ComposerStaticInita061568f6d321c357765cb8a1c5d2443
         'Fideloper\\Proxy\\TrustedProxyServiceProvider' => __DIR__ . '/..' . '/fideloper/proxy/src/TrustedProxyServiceProvider.php',
         'Fruitcake\\Cors\\CorsServiceProvider' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/CorsServiceProvider.php',
         'Fruitcake\\Cors\\HandleCors' => __DIR__ . '/..' . '/fruitcake/laravel-cors/src/HandleCors.php',
+        'GrahamCampbell\\Markdown\\Facades\\Markdown' => __DIR__ . '/..' . '/graham-campbell/markdown/src/Facades/Markdown.php',
+        'GrahamCampbell\\Markdown\\MarkdownServiceProvider' => __DIR__ . '/..' . '/graham-campbell/markdown/src/MarkdownServiceProvider.php',
+        'GrahamCampbell\\Markdown\\View\\Compiler\\MarkdownCompiler' => __DIR__ . '/..' . '/graham-campbell/markdown/src/View/Compiler/MarkdownCompiler.php',
+        'GrahamCampbell\\Markdown\\View\\Directive\\MarkdownDirective' => __DIR__ . '/..' . '/graham-campbell/markdown/src/View/Directive/MarkdownDirective.php',
+        'GrahamCampbell\\Markdown\\View\\Engine\\BladeMarkdownEngine' => __DIR__ . '/..' . '/graham-campbell/markdown/src/View/Engine/BladeMarkdownEngine.php',
+        'GrahamCampbell\\Markdown\\View\\Engine\\PathEvaluationTrait' => __DIR__ . '/..' . '/graham-campbell/markdown/src/View/Engine/PathEvaluationTrait.php',
+        'GrahamCampbell\\Markdown\\View\\Engine\\PhpMarkdownEngine' => __DIR__ . '/..' . '/graham-campbell/markdown/src/View/Engine/PhpMarkdownEngine.php',
         'GuzzleHttp\\Client' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Client.php',
         'GuzzleHttp\\ClientInterface' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/ClientInterface.php',
         'GuzzleHttp\\Cookie\\CookieJar' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/Cookie/CookieJar.php',
@@ -5690,6 +5706,7 @@ class ComposerStaticInita061568f6d321c357765cb8a1c5d2443
         'Tests\\CreatesApplication' => __DIR__ . '/../..' . '/tests/CreatesApplication.php',
         'Tests\\Feature\\ExampleTest' => __DIR__ . '/../..' . '/tests/Feature/ExampleTest.php',
         'Tests\\Feature\\ImageTest' => __DIR__ . '/../..' . '/tests/Feature/ImageTest.php',
+        'Tests\\Feature\\PhotoSubmitApiTest' => __DIR__ . '/../..' . '/tests/Feature/PhotoSubmitApiTest.php',
         'Tests\\TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Tests\\Unit\\ExampleTest' => __DIR__ . '/../..' . '/tests/Unit/ExampleTest.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
@@ -5817,10 +5834,10 @@ class ComposerStaticInita061568f6d321c357765cb8a1c5d2443
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita061568f6d321c357765cb8a1c5d2443::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita061568f6d321c357765cb8a1c5d2443::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita061568f6d321c357765cb8a1c5d2443::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInita061568f6d321c357765cb8a1c5d2443::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitea635689ce2c4c614f609f5db899f705::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitea635689ce2c4c614f609f5db899f705::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitea635689ce2c4c614f609f5db899f705::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitea635689ce2c4c614f609f5db899f705::$classMap;
 
         }, null, ClassLoader::class);
     }

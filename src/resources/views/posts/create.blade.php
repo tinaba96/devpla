@@ -43,7 +43,7 @@
                         </label>
 
                         <textarea
-                            id="body"
+                            id="simplemde"
                             name="body"
                             class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}"
                             rows="4"
@@ -95,9 +95,6 @@
 			<input type="file" name="image" accept="image/png, image/jpeg"/>
 			<input type="submit" value="写真投稿">
 		</form> -->
-
-
-
 
 
 

@@ -35,11 +35,11 @@
                         </label>
 
                         <textarea
-                            id="body"
+                            id="simplemde"
                             name="body"
                             class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}"
                             rows="4"
-                        >{{ old('body') ?: $post->body }}</textarea>
+                        >{{ old('body') ?: ($post->body)}}</textarea>
                         @if ($errors->has('body'))
                             <div class="invalid-feedback">
                                 {{ $errors->first('body') }}
@@ -51,7 +51,6 @@
                         <a class="btn btn-secondary" href="{{ route('posts.show', ['post_id' =>$post ]) }}">
                             キャンセル
                         </a>
-
                         <button type="submit" class="btn btn-primary">
                             更新する
                         </button>
