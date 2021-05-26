@@ -92,3 +92,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/post/{post}/unlike', 'LikeController@destroy')->name('unlikes');
 
 
+    Route::get('/mypage', 'HomeController@show')->name('mypage');
+    Route::get('/mypage/edit', 'HomeController@edit');
+    Route::patch('/mypage/edit', 'HomeController@update');
+
+    Route::get('/mypage/image/edit', 'HomeController@edit_image');
+    Route::patch('/mypage/image/{user}/edit', 'HomeController@update_image')->name('update_user_image');
+

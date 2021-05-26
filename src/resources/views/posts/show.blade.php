@@ -35,25 +35,6 @@
             </p>
 
             <section>
-<<<<<<< HEAD
-	    <div class="row justify-content-center">
-                @if ($post->users()->where('user_id', Auth::id())->exists())
-                    <div class="col align-self-end">
-		    <form action="{{ route('unlikes', $post) }}" method="POST">
-		      @csrf
-		      <input type="submit" value="&#xf164;UnLike" class="fas btn btn-danger">
-		    </form>
-	    </div>
-@else
-                    <div class="col align-self-end">
-		    <form action="{{ route('likes', $post) }}" method="POST">
-		      @csrf
-		      <input type="submit" value="&#xf164;Like" class="fas btn btn-success">
-		    </form>
-		    </div>
-@endif
-
-=======
                 <h2 class="h5 mb-4">
                     コメント
                 </h2>
@@ -104,7 +85,23 @@
                     <p>コメントはまだありません。</p>
                 @endforelse
             </section>
->>>>>>> 491dbf6c07bdbf9b543422a22ca247e2b2154f7f
+	    <div class="row justify-content-center">
+                @if ($post->users()->where('user_id', Auth::id())->exists())
+                    <div class="col align-self-end">
+		    <form action="{{ route('unlikes', $post) }}" method="POST">
+		      @csrf
+		      <input type="submit" value="&#xf164;UnLike" class="fas btn btn-danger">
+		    </form>
+	    </div>
+@else
+                    <div class="col align-self-end">
+		    <form action="{{ route('likes', $post) }}" method="POST">
+		      @csrf
+		      <input type="submit" value="&#xf164;Like" class="fas btn btn-success">
+		    </form>
+		    </div>
+@endif
+
 
         </div>
     </div>

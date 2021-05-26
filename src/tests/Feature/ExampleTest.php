@@ -17,15 +17,21 @@ class ExampleTest extends TestCase
         $response = $this->get('/');
 
 <<<<<<< HEAD
+<<<<<<< Updated upstream
         $response->assertStatus(302);
         #$response->assertStatus(200);
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
         $response->assertStatus(302);  // ステータスコードを変更
 =======
         $response->assertStatus(302);
         #$response->assertStatus(200);
 >>>>>>> origin/inaba
+<<<<<<< Updated upstream
 >>>>>>> 491dbf6c07bdbf9b543422a22ca247e2b2154f7f
+=======
+>>>>>>> Stashed changes
     }
 }

@@ -15,7 +15,6 @@ class PostsController extends Controller{
     {
     // $posts = Auth::user()->posts()->orderBy('created_at', 'desc')->get();
     $posts = Auth::user()->posts()->get();
-    // $posts_i = Images::orderBy("created_at", "desc")->get();
     $posts = Post::orderBy('created_at', 'desc')->get();
     //$uploads = Images::orderBy("id", "desc")->get();
 

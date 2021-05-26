@@ -14,11 +14,12 @@
         "fruitcake/laravel-cors": "^2.0",
         "graham-campbell/markdown": "^13.1",
         "guzzlehttp/guzzle": "^6.3",
+        "intervention/image": "^2.5",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
-	"laravelcollective/html": "6.*",
-	"league/flysystem-aws-s3-v3": "~1.0",
-        "laravel/ui": "2.*"
+        "laravel/ui": "2.*",
+        "laravelcollective/html": "6.*",
+        "league/flysystem-aws-s3-v3": "~1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
