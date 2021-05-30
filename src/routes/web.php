@@ -99,3 +99,16 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/mypage/image/edit', 'HomeController@edit_image');
     Route::patch('/mypage/image/{user}/edit', 'HomeController@update_image')->name('update_user_image');
 
+    Route::get('/users/', 'HomeController@users')->name('users_list');
+
+    Route::get('/users/{user}', 'HomeController@user');
+    
+    
+
+
+    
+
+
+
+
+
