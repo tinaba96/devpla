@@ -16,10 +16,11 @@
 
 	@foreach ($posts as $post)
 
- -->            <div class="col-xs-6 col-md-8">
+            <div class="col-xs-6 col-md-8">
                 <div class="card mb-4">
 
                     <div class="card-header">
+                        <h2> {{ $post->users()->first()->name }}</h2>
                         {{ $post->title }}
                     </div>
                     <div class="card-body">
@@ -39,7 +40,7 @@
 			<div class="row justify-content-center">
 			    <p>Likes:{{ $post -> users() -> count() }}</p>
 			</div>
-      @if ($post->users()->where('user_id', Auth::id())->exists())
+      @if ($post->users()->first()->id == Auth::id())
                         <div class="row justify-content-around">
 		                    <form action="{{ route('unlikes', $post) }}" method="POST">
 @csrf

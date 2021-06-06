@@ -17,8 +17,9 @@ class Post extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User')->withTimestamps();
-        //return $this->belongsTo('App\User');
+        // dd($this->belongsToMany('App\User')->withTimestamp());
+        // urn $this->belongsToMany('App\User')->withTimestamps();
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function comments()

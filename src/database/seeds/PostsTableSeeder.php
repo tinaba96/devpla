@@ -16,15 +16,17 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
 
-        $user = DB::table('users')->first(); // ★
+        factory(\App\Post::class, 20)->create();
 
-        DB::table('posts')->insert([
-            'user_id' => $user->id, // ★
-            'title' =>  'おらおらおろあおらおろあおらおらおろあおらおr',
-            'body' => 'よーーーーーーーーーーーーーーーーーーー',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-          ]);
+        // $user = DB::table('users')->first(); // ★
+
+        // DB::table('posts')->insert([
+        //     'user_id' => $user->id, // ★
+        //     'title' =>  'おらおらおろあおらおろあおらおらおろあおらおr',
+        //     'body' => 'よーーーーーーーーーーーーーーーーーーー',
+        //     'created_at' => Carbon::now(),
+        //     'updated_at' => Carbon::now(),
+        //   ]);
     
 
     }
