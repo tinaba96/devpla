@@ -26,7 +26,7 @@ class Like extends Model
 		'user_id', 'post_id'
 	];
 
-	proteccted $guarded = [
+	protected $guarded = [
 		'id'
 	];
 

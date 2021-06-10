@@ -71,6 +71,9 @@
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <a href =  {{ url('users') }}> 退会予定の方はこちら </a>
+                    </div>
                 
                 </div>
             </div>

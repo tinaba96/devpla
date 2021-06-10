@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/post/{post_id}/edit', 'PostsController@showEditForm')->name('posts.edit');
     Route::put('/post/{post_id}/edit', 'PostsController@update')->name('posts.update');
 
+    //投稿削除
     Route::delete('/post/{post_id}', 'PostsController@destroy')->name('posts.destroy');
 
     //コメント作成
@@ -91,10 +92,16 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/post/{post}/like', 'LikeController@store')->name('likes');
     Route::post('/post/{post}/unlike', 'LikeController@destroy')->name('unlikes');
 
-
+    //ユーザーページ表示
     Route::get('/mypage', 'HomeController@show')->name('mypage');
     Route::get('/mypage/edit', 'HomeController@edit');
     Route::patch('/mypage/edit', 'HomeController@update');
+
+    //ユーザー削除
+    Route::resource('users','UsersController',['only'=>['show','destroy']]); //destroyを追記
+    // Route::delete('/post/{post_id}', 'UsersController@destroy')->name('posts.destroy');
+    // Route::delete('/post/{post_id}', 'UsersController@destroy')->name('posts.destroy');
+    Route::get('/users','UsersController@delete_confirm')->name('users.delete_confirm'); //警告画面に飛ばしたいため追記
 
     Route::get('/mypage/image/edit', 'HomeController@edit_image');
     Route::patch('/mypage/image/{user}/edit', 'HomeController@update_image')->name('update_user_image');
