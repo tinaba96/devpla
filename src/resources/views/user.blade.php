@@ -7,16 +7,49 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
+                @if (Auth::user()->id == $user->id)
                 <h3><font color="blue">マイページ</font></h3>
-                    <img width="100%" src="{{ asset('storage/profiles/'.$user->profile_image) }}" alt="profile_image">
-                    <a href =  {{ url('/mypage/image/edit/') }}> 写真の編集 </a>
+                @else
+                <h3><font color="blue">{{ $user->name }} </font></h3>
+                @endif
+
+                <img width="100%" src="{{ asset('storage/profiles/'.$user->profile_image) }}" alt="profile_image">
+                @if (Auth::user()->id == $user->id)
+                <a href =  {{ url('/mypage/image/edit/') }}> 写真の編集 </a>
+                @endif
+
+                <br>
+                <br>
+
+                <div class="row justify-content-center">
+                    <div align='center' class="col-md-6">
+                        <a href = {{ url('/users/' . $user->id . '/followers') }}>
+                        {{ $user->followers()->count() }}
+                        </a>
+                    </div>
+                    <div align='center' class="col-md-6">
+                        <a href = {{ url('/users/' . $user->id . '/following') }}>
+                        {{ $user->following()->count() }}
+                        </a>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <p> Followers </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p> Following </p>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
+                    @if (Auth::user()->id == $user->id)
                     <div align='right'> <a href =  {{ url('/mypage/edit/') }}> 編集 </a></div>
+                    @endif
                     <div class="row justify-content-center">
                         <div class="col-md-12">
                             <h4><font color="#ff9933">スキル</font></h4>

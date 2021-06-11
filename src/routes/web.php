@@ -103,12 +103,12 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/users/{user}', 'HomeController@user');
     
-    
+
+    Route::Post('/users/{followed_id}/follow', 'FollowController@follow');
+    Route::Delete('/users/{followed_id}/unfollow', 'FollowController@unfollow');
 
 
-    
-
-
-
+    Route::get('/users/{id}/following', 'FollowController@following');
+    Route::get('/users/{id}/followers', 'FollowController@followers');
 
 

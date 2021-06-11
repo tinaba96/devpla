@@ -20,7 +20,7 @@ class PostsController extends Controller{
 
     $posts_i = Images::all();
 
-    $post = Post::all()->first();
+    // $post = Post::all()->first();
     // dd($post->users()->first()->name);
     //return view('posts.index', ['posts' => $posts]);
     return view('posts.index', ['images' => $posts_i, "posts" => $posts]);
