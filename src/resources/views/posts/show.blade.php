@@ -86,21 +86,21 @@
                 @endforelse
             </section>
 	    <div class="row justify-content-center">
-                @if ($post->users()->where('user_id', Auth::id())->exists())
+                @if ($post->where('user_id', Auth::id())->exists())
                     <div class="col align-self-end">
 		    <form action="{{ route('unlikes', $post) }}" method="POST">
 		      @csrf
 		      <input type="submit" value="&#xf164;UnLike" class="fas btn btn-danger">
 		    </form>
 	    </div>
-@else
+                @else
                     <div class="col align-self-end">
 		    <form action="{{ route('likes', $post) }}" method="POST">
 		      @csrf
 		      <input type="submit" value="&#xf164;Like" class="fas btn btn-success">
 		    </form>
 		    </div>
-@endif
+                @endif
 
 
         </div>

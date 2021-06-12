@@ -38,7 +38,7 @@ class LikeController extends Controller
     //public function store(Request $request)
     public function store(Post $post)
     {
-	$post->users()->attach(Auth::id());
+	    $post->users()->attach(Auth::id());
 
         return redirect()->route('posts.index');
     }
