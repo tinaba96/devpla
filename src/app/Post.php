@@ -15,11 +15,16 @@ class Post extends Model
        	'file_path'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+
+    }
+
     public function users()
     {
-        // dd($this->belongsToMany('App\User')->withTimestamp());
-        // urn $this->belongsToMany('App\User')->withTimestamps();
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsToMany('App\User')->withTimestamps();
+        // return $this->belongsTo('App\User', 'user_id');
     }
 
     public function comments()

@@ -86,7 +86,7 @@
                 @endforelse
             </section>
 	    <div class="row justify-content-center">
-                @if ($post->where('user_id', Auth::id())->exists())
+                @if ($post->users()->where('user_id', Auth::id())->exists())
                     <div class="col align-self-end">
 		    <form action="{{ route('unlikes', $post) }}" method="POST">
 		      @csrf

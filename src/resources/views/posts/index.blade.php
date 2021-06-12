@@ -20,7 +20,7 @@
                 <div class="card mb-4">
 
                     <div class="card-header">
-                        <h2> {{ $post->users()->first()->name }}</h2>
+                        <h2> {{ $post->user()->first()->name }}</h2>
                         {{ $post->title }}
                     </div>
                     <div class="card-body">
@@ -40,21 +40,21 @@
 			<div class="row justify-content-center">
 			    <p>Likes:{{ $post -> users() -> count() }}</p>
 			</div>
-      @if ($post->users()->first()->id == Auth::id())
+    @if ($post->users()->where('user_id', Auth::id())->exists())
                         <div class="row justify-content-around">
 		                    <form action="{{ route('unlikes', $post) }}" method="POST">
 @csrf
                                 <input type="submit" value="&#xf164;Unlike" class="fas btn btn-danger">
                             </form>
                         </div>
-      @else
+    @else
                         <div class="row justify-content-around">
 		                        <form action="{{ route('likes', $post) }}" method="POST">
 @csrf
                                 <input type="submit" value="&#xf164;Like" class="fas btn btn-success">
                             </form>
                         </div>
-      @endif
+    @endif
                     <div class="card-footer">
                         <span class="mr-2">
                             投稿日時 {{ $post->created_at->format('Y.m.d') }}
