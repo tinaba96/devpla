@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -28,6 +29,21 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function users(){
+
+        $users = User::all();
+
+        // dd($users->count());
+
+        return view('users', compact('users'));
+    }
+
+    public function user(User $user){
+        
+        return view('user', compact('user'));
+    }
+
+
     public function show(){
 
         $users = Auth::user();
@@ -42,9 +58,7 @@ class HomeController extends Controller
 
 
         $users = Auth::user();
-
         return view('edit_mypage', compact('users'));
-
     }
 
     public function update(Request $requests){

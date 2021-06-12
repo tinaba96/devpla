@@ -101,8 +101,21 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('users','UsersController',['only'=>['show','destroy']]); //destroyを追記
     // Route::delete('/post/{post_id}', 'UsersController@destroy')->name('posts.destroy');
     // Route::delete('/post/{post_id}', 'UsersController@destroy')->name('posts.destroy');
-    Route::get('/users','UsersController@delete_confirm')->name('users.delete_confirm'); //警告画面に飛ばしたいため追記
+    Route::get('/user/delete','UsersController@delete_confirm')->name('users.delete_confirm'); //警告画面に飛ばしたいため追記
 
     Route::get('/mypage/image/edit', 'HomeController@edit_image');
     Route::patch('/mypage/image/{user}/edit', 'HomeController@update_image')->name('update_user_image');
+
+    Route::get('/users', 'HomeController@users')->name('users_list');
+
+    Route::get('/users/{user}', 'HomeController@user');
+    
+
+    Route::Post('/users/{followed_id}/follow', 'FollowController@follow');
+    Route::Delete('/users/{followed_id}/unfollow', 'FollowController@unfollow');
+
+
+    Route::get('/users/{id}/following', 'FollowController@following');
+    Route::get('/users/{id}/followers', 'FollowController@followers');
+
 

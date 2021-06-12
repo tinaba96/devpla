@@ -7,16 +7,39 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                <h3><font color="blue">マイページ</font></h3>
+                    <h3><font color="blue">マイページ</font></h3>
                     <img width="100%" src="{{ asset('storage/profiles/'.$users->profile_image) }}" alt="profile_image">
 
                     <a href =  {{ url('/mypage/image/edit/') }}> 写真の編集 </a>
-                
+
+                <br>
+                <br>
+
+                <div class="row justify-content-center">
+                    <div align='center' class="col-md-6">
+                        <a href = {{ url('/users/' . Auth::user()->id . '/followers') }}>
+                        {{ Auth::user()->followers()->count() }}
+                        </a>
+                    </div>
+                    <div align='center' class="col-md-6">
+                        <a href = {{ url('/users/' . Auth::user()->id . '/following') }}>
+                        {{ Auth::user()->following()->count() }}
+                        </a>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <p> Followers </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p> Following </p>
+                    </div>
+                </div>
+
                 </div>
             </div>
-
-
         </div>
+
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
@@ -72,7 +95,7 @@
                         </div>
                     </div>
                     <div>
-                        <a href =  {{ url('users') }}> 退会予定の方はこちら </a>
+                        <a href =  {{ url('user/delete') }}> 退会予定の方はこちら </a>
                     </div>
                 
                 </div>
