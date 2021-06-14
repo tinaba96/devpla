@@ -119,3 +119,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/users/{id}/followers', 'FollowController@followers');
 
 
+    Route::post('/add', 'ChatController@add')->name('add');
+    Route::get('/homechat', 'ChatController@index')->name('chat');
+    Route::get('/result/ajax', 'ChatController@getData');
+
+

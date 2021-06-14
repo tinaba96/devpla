@@ -22,6 +22,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <link href="simplemde-with-emoji-picker-main/unicode-emoji-picker/css/emoji.css" rel="stylesheet">
+    
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <link href="{{ asset('css/view.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <style>
         .editor-toolbar:hover {
             opacity: unset !important;
@@ -162,5 +167,6 @@
     </script>
     @endif
     @yield('scripts')
+    @yield('js')
 </body>
 </html>
