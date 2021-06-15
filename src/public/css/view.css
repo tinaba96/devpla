@@ -5,7 +5,8 @@
   
   .chat-card {
     height: 67vh;
-    overflow: auto;
+    overflow-y:scroll;
+
   }
   
   .chat-area {
