@@ -6,17 +6,24 @@
 
 @section('content')
     <div class="container mt-4">
+    <h1 style="color:green; text-align:center;">投稿一覧</h1>
+
+    <ul style='float:right;' class="navbar-nav mr-auto">
+        @auth
+        <a href="/post" class="btn2">新規投稿</a>
+        @endauth
+    </ul>
+    <br>
+    </div>
+
+    <div class="container mt-4">
     <!-- <a href="{{ route('posts.create') }}" class="btn btn-primary">
         投稿を新規作成する
     </a> -->
-
-
-
-    
-
 	@foreach ($posts as $post)
 
-            <div class="col-xs-6 col-md-8">
+            <!-- <div class="col-xs-6 col-md-8"> -->
+            <div class="col-xs-6 justify-content-center">
                 <div class="card mb-4">
 
                     <div class="card-header">

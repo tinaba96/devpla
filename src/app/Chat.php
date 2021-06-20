@@ -13,4 +13,8 @@ class Chat extends Model
     protected $guarded = [
         'create_at', 'update_at'
     ];
+
+    public function chatgroup(){
+        return $this->belongsToMany('App\Chat', 'App\User_chatgroup', 'group_id', 'id');
+    }
 }

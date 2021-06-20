@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('index', 'PostsController@index')->name('top');
 
+Route::get('/', 'UsersController@lp')->name('lp');
+
+
 Auth::routes();
 
 
@@ -28,7 +31,7 @@ Route::group(['middleware' => 'auth'], function() {
         
     
     //投稿一覧確認ページ
-    Route::get('/', 'PostsController@index')->name('posts.index');
+    Route::get('/homeposts', 'PostsController@index')->name('posts.index');
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/post', 'PostsController@showCreateForm')->name('posts.create');
@@ -114,13 +117,19 @@ Route::group(['middleware' => 'auth'], function() {
     Route::Post('/users/{followed_id}/follow', 'FollowController@follow');
     Route::Delete('/users/{followed_id}/unfollow', 'FollowController@unfollow');
 
-
     Route::get('/users/{id}/following', 'FollowController@following');
     Route::get('/users/{id}/followers', 'FollowController@followers');
 
-
     Route::post('/add', 'ChatController@add')->name('add');
-    Route::get('/homechat', 'ChatController@index')->name('chat');
+    // Route::get('/homechat', 'ChatController@index')->name('chat');
     Route::get('/result/ajax', 'ChatController@getData');
+
+    Route::get('/homechat', 'ChatController@home')->name('chat');
+
+    Route::post('/homechat', 'ChatController@store');
+    Route::get('/homechat/create', 'ChatController@create');
+    Route::get('/homechat/{chatgroup}', 'ChatController@chat');
+    Route::get('/homechat/{chatgroup}/members', 'ChatController@members');
+    Route::post('/homechat/{chatgroup}/bemember', 'ChatController@bemember');
 
 

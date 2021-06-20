@@ -18,4 +18,8 @@ class UsersController extends Controller
     {
         return view('users.delete_confirm');
     }
+
+    public function lp(){
+        return view('landing-page');
+    }
 }

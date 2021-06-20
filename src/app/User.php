@@ -123,6 +123,10 @@ class User extends Authenticatable
         }
     }
 
+    public function user_chatgroup(){
+        return $this->hasMany('App\User_chatgroup', 'user_id', 'id');
+    }
+
 
 }
 

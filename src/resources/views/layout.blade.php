@@ -50,7 +50,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('') }}">
+                <a class="navbar-brand" href="{{ url('/homechat') }}">
                 DevPla
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -61,17 +61,20 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
+                        <!-- <ul class="navbar-nav mr-auto">
                             @auth
                                 <a href="/post" class="btn2">新規投稿</a>
                             @endauth
-                        </ul>
+                        </ul> -->
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
+                            @if (Auth::check())
                                 <a class="nav-link" href="{{ route('chat') }}">チャット</a>
+                                <a class="nav-link" href="{{ route('posts.index') }}">投稿一覧</a>
                                 <a class="nav-link" href="{{ route('image_list') }}">写真一覧</a>
                                 <a class="nav-link" href="{{ route('users_list') }}">ユーザ一覧</a>
+                            @endif
                             <!-- Authentication Links -->
                             @guest
                             <li class="nav-item">
@@ -112,6 +115,17 @@
                 </div>
             </div>
         </nav>
+
+        @if (Session::has('success'))
+            <div class="alert alert-success" role="alert">
+                <strong> {{ Session::get('success') }}</strogn>
+            </div>
+        @elseif (Session::has('error'))
+            <div class="alert alert-danger" role="alert">
+                <strong>{{ Session::get('error') }}</strong>
+            </div>
+        @endif
+
     </div>
     <div class ="d">
         @yield('content')

@@ -11,7 +11,11 @@
             <div class="card-body chat-card">
                 <div id="comment-data"></div>
                 @foreach ($chats as $item)
-                @include('components.chat',['item' => $item])
+                @foreach ($members as $member)
+                    @if($member->user_id == $item->login_id)
+                    @include('components.chat',['item' => $item])
+                    @endif
+                @endforeach
                 @endforeach
             </div>
         </div>
