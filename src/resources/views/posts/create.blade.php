@@ -30,11 +30,6 @@
 
 
 
-
-
-
-
-
                     </div>
 
                     <div class="form-group">
@@ -58,11 +53,6 @@
 			                  <input type="file" name="image" accept="image/png, image/jpeg"/>
 
                     </div>
-
-
-
-
-
 
                     <div class="mt-5">
                         <a class="btn btn-secondary" href="{{ route('posts.index') }}">
@@ -95,10 +85,6 @@
 			<input type="file" name="image" accept="image/png, image/jpeg"/>
 			<input type="submit" value="写真投稿">
 		</form> -->
-
-
-
-
 
 
         </div>
