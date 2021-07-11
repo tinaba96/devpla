@@ -120,7 +120,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/users/{id}/following', 'FollowController@following');
     Route::get('/users/{id}/followers', 'FollowController@followers');
 
-    Route::post('/add', 'ChatController@add')->name('add');
+    // Route::post('/add', 'ChatController@add')->name('add');
     // Route::get('/homechat', 'ChatController@index')->name('chat');
     Route::get('/result/ajax', 'ChatController@getData');
 
@@ -129,6 +129,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/homechat', 'ChatController@store');
     Route::get('/homechat/create', 'ChatController@create');
     Route::get('/homechat/{chatgroup}', 'ChatController@chat');
+    Route::post('/homechat/{chatgroup}', 'ChatController@add');
     Route::get('/homechat/{chatgroup}/members', 'ChatController@members');
     Route::post('/homechat/{chatgroup}/bemember', 'ChatController@bemember');
 

@@ -2,18 +2,23 @@
 
 @section('content')
 
+
+
+
 <div class="chat-container row justify-content-center">
     <div class="chat-area">
         <div class='card'>
             <div class='card-header'>
-                チャット
+                <h4> {{ $chatgroup->name }}  </h4>
             </div>
             <div class="card-body chat-card">
                 <div id="comment-data"></div>
                 @foreach ($chats as $item)
                 @foreach ($members as $member)
-                    @if($member->user_id == $item->login_id)
-                    @include('components.chat',['item' => $item])
+                    @if($item->chatgroup_id == $chatgroup->id)
+                        @if($member->user_id == $item->login_id)
+                        @include('components.chat',['item' => $item])
+                        @endif
                     @endif
                 @endforeach
                 @endforeach
@@ -22,16 +27,7 @@
     </div>
 </div>
 
-<!-- <form method='POST' action="{{ route('add') }}">
-    @csrf
-    <div class="comment-container row justify-content-center">
-        <div class="input-group comment-area">
-            <textarea class="form-control" id = "comment" name = "chat" placeholder="push massage (Shift + Enter)" aria-label="With textarea" onkeydown="if(even.shiftKey&&event.KeyCode==13){document.getElementById('submit').click();return false};" ></textearea>
-            <button type="submit" id='submit' class="btn btn-outline-primary comment-btn">送信</button> 
-        </div>
-    </div>
-</form> -->
-<form method="POST" action="{{route('add')}}">
+<form method="POST" action='/homechat/{{ $chatgroup->id }}/'>
     @csrf
     <div class="comment-container row justify-content-center">
         <div class="input-group comment-area">

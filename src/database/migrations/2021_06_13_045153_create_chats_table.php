@@ -18,6 +18,7 @@ class CreateChatsTable extends Migration
             $table->integer('login_id');
             $table->string('name');
             $table->string('chat');
+            $table->integer('chatgroup_id');
             $table->timestamps();
         });
     }

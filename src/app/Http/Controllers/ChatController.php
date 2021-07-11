@@ -89,13 +89,15 @@ class ChatController extends Controller
     }
 
 
-    public function add(Request $request){
+    public function add(Request $request, Chatgroup $chatgroup){
         $user = Auth::user();
         $chat = $request->input('chat');
+        // dd($chatgroup->id);
         Chat::create([
             'login_id' => $user->id,
             'name' => $user->name,
-            'chat' => $chat
+            'chat' => $chat,
+            'chatgroup_id' => $chatgroup->id
         ]);
         return back();
         // return redirect();
