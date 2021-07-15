@@ -48,6 +48,8 @@ Thumbs.db
 *.mov
 *.wmv
 
+/db
+
 /node_modules
 /public/hot
 /public/storage
