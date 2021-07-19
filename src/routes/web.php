@@ -133,4 +133,5 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/homechat/{chatgroup}/members', 'ChatController@members');
     Route::post('/homechat/{chatgroup}/bemember', 'ChatController@bemember');
 
+    Route::get('/adminhome', 'AdminController@home')->name('admin');
 

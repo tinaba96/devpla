@@ -48,7 +48,7 @@ class ChatController extends Controller
         // dd($members->count());
         $chats = Chat::all();
         foreach($members as $member){
-            if(Auth::user()->id == $member->user_id){
+            if(Auth::user()->id == $member->user_id || Auth::user()->role == 'admin'){
                 return view('chat', compact('chatgroup', 'chats', 'members'));
             }
         }
