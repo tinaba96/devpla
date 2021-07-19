@@ -15,11 +15,12 @@ services:
     ports:
       -  "3311:3306"
     volumes:
-      -  ./db:/var/lib/mysql
+      -  ./db:/var/lib/mysql2
       -  ./my_conf:/etc/mysql/conf.d
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: devpla
+    command: bash -c 'usermod -o -u 1000 mysql; groupmod -o -g 500 mysql; chown -R mysql:root /var/run/mysqld/; /entrypoint.sh mysqld --user=mysql --console'
   nginx:
     image: nginx:stable-alpine
     container_name: nginx

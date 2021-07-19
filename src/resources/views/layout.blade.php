@@ -62,6 +62,9 @@
                                 <a class="nav-link" href="{{ route('posts.index') }}">投稿一覧</a>
                                 <a class="nav-link" href="{{ route('image_list') }}">写真一覧</a>
                                 <a class="nav-link" href="{{ route('users_list') }}">ユーザ一覧</a>
+                                @if (Auth::user()->role == 'admin')
+                                    <a class="nav-link" href="{{ route('admin') }}">管理者画面</a>
+                                @endif
                             @endif
                             <!-- Authentication Links -->
                             @guest
