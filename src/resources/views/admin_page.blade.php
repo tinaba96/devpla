@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-md-6"> 
                                 <u>最終ログイン</u>
-                                <div>{{ $user->updated_at }}</div>
+                                <div>{{ $user->last_login_at }}</div>
                             </div>
                         </div>
                     </div>
