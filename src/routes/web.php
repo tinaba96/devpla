@@ -19,6 +19,14 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('index', 'PostsController@index')->name('top');
 
+
+
+
+// vueのテスト用↓
+Route::get('/test', function () {
+    return view('welcome');
+});
+
 Route::get('/', 'UsersController@lp')->name('lp');
 
 

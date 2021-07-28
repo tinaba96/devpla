@@ -1,4 +1,6 @@
 const mix = require('laravel-mix');
+const tailwindcss = require('tailwindcss')
+require('laravel-mix-purgecss')
 
 /*
  |--------------------------------------------------------------------------
@@ -12,8 +14,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .browserSync({
-        proxy: '0.0.0.0:8000', // アプリの起動アドレス
-        open: false // ブラウザを自動で開かない
-      });
+   .sass('resources/sass/app.scss', 'public/css')
+   .options({
+   	processCssUrls: false,
+   	postCss: [tailwindcss('./tailwind.config.js')],
+   }).purgeCss();

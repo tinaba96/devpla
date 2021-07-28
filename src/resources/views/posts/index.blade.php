@@ -10,7 +10,7 @@
 
     <ul style='float:right;' class="navbar-nav mr-auto">
         @auth
-        <a href="/post" class="btn2">新規投稿</a>
+    <a href="/post" class="btn2">新規投稿</a>
         @endauth
     </ul>
     <br>
