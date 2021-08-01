@@ -1,0 +1,17 @@
+.editor-toolbar:hover {
+    opacity: unset !important;
+}
+
+.editor-toolbar {
+    opacity: 1;
+}
+
+.emoji-menu {
+    top: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+    .emoji-menu {
+        left: 20px !important;
+    }
+}
