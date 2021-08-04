@@ -1,11 +1,3 @@
-<style>
-    .post-card{
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-</style>
-
 
 @extends('layout')
 
@@ -15,7 +7,7 @@
 
   <section class="px-4 sm:px-6 lg:px-4 xl:px-6 pt-4 pb-4 sm:pb-6 lg:pb-4 xl:pb-6 space-y-4">
   <header class="flex items-center justify-between">
-    <h2 class="text-lg leading-6 font-medium text-black">開発グループ一覧</h2>
+    <h2 class="text-lg leading-6 font-medium text-white">開発グループ一覧</h2>
 
     <form align='right' action='/homechat/create' method='GET'>
             @csrf
@@ -49,7 +41,7 @@
           <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
             <div>
               <dt class="sr-only">Title</dt>
-              <dd class="group-hover:text-white leading-6 font-medium text-black">
+              <dd class="group-hover:text-blue leading-6 font-medium text-black">
                 {{ $group->name }}
               </dd>
             </div>
@@ -62,7 +54,11 @@
             <div class="col-start-2 row-start-1 row-end-3">
               <dt class="sr-only">Users</dt>
               <dd class="flex justify-end sm:justify-start lg:justify-end xl:justify-start -space-x-2">
-
+                @foreach($members as $member)
+                    @if($group->id == $member->chatgroup_id)
+                    <img src="{{ asset('storage/profiles/'.$member->users()->first()->profile_image) }}" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" />
+                    @endif
+                @endforeach
               </dd>
             </div>
             <form align='right' action='/homechat/{{ $group->id }}/members/' method='GET'>

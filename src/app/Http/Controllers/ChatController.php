@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Chat;
 use App\User;
+use App\Images;
 use App\Chatgroup;
 use App\User_chatgroup;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,13 @@ class ChatController extends Controller
 
     public function home(){
         $groups = Chatgroup::all();
-        return view('homechat', compact('groups'));
+        $images = Images::all();
+        $users = Auth::user();
+        $members = User_chatgroup::all();
+        // $members = User_chatgroup::where('chatgroup_id', 1)->get();
+        // dd($chatgroup)
+        // dd($members);
+        return view('homechat', compact('groups','images','users','members'));
     }
 
     public function group_list(){
@@ -34,8 +41,20 @@ class ChatController extends Controller
        Chatgroup::create([
            'name' => $request->name
        ]);
+
+        // dd(Chatgroup::count());
+
+       User_chatgroup::create([
+        'user_id' => Auth::user()->id,
+        'chatgroup_id' => Chatgroup::count()
+    ]);
+
         $groups = Chatgroup::all();
-       return view('homechat', compact('groups'));
+        $images = Images::all();
+        $users = Auth::user();
+        // dd($members);    
+        $members = User_chatgroup::all();
+       return view('homechat', compact('groups', 'images','users','members'));
     }
 
     public function create(){
@@ -99,6 +118,9 @@ class ChatController extends Controller
             'chat' => $chat,
             'chatgroup_id' => $chatgroup->id
         ]);
+
+
+
         return back();
         // return redirect();
     }
