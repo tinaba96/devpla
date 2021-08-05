@@ -8,8 +8,9 @@
             <div class="card">
                 <div class="card-body">
                     <h3><font color="blue">マイページ</font></h3>
-                    <img width="100%" src="{{ asset('storage/profiles/'.$users->profile_image) }}" alt="profile_image">
+	                <img width="200px" src="{{ Auth::user() -> profile_image }}" alt="profile_image">
 
+                    <br>
                     <a href =  {{ url('/mypage/image/edit/') }}> 写真の編集 </a>
 
                 <br>

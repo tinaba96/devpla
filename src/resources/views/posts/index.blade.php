@@ -37,7 +37,8 @@
 	@foreach ($images as $image)
 		    @if ($post->created_at == $image->created_at)
 			<p>{{ $image->file_name }}</p>
-			<img src="{{ Storage::url($image->file_path) }}" style="width:100%;"/>
+			<!-- <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"/> -->
+	        <img src="{{ $image -> file_path }}" style="width:100%;">
 			@endif
 	@endforeach
                         <a class="card-link" href="{{ route('posts.show', ['post_id' => $post]) }}">

@@ -178,6 +178,9 @@ return [
 
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
 
+        // Add Intervention Image.
+        Intervention\Image\ImageServiceProvider::class,
+
     ],
 
     /*
@@ -230,6 +233,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
+        'Hash' => Illuminate\Support\Facades\Hash::class,
+        // Add Intervention Image.
+        'InterventionImage' => Intervention\Image\Facades\Image::class,
+
     ],
 
 ];

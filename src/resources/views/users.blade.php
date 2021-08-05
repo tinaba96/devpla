@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                        <img width="40%" src="{{ asset('storage/profiles/'.$user->profile_image) }}" alt="profile_image">
+                        <img width="40%" src="{{ $user->profile_image }}" alt="profile_image">
                         </div>
                         <div class="col-md-4">
                         <a class="nav-link" href="{{ url('/users/'. $user->id) }}"><h3>{{ $user->name }}</h3></a>
