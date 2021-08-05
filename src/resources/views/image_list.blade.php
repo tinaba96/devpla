@@ -2,8 +2,8 @@
 
 @section('content')
 
-<a href="{{ route('posts.index') }}">投稿画面に戻る</a>
-<h1 style="color:green; text-align:center;">写真一覧</h1>
+<a class = text-white href="{{ route('posts.index') }}">投稿画面に戻る</a>
+<h1 style="color:green; text-align:center;  font-size: 2.25rem;">写真一覧</h1>
 <hr />
 
 @foreach($images as $image)
