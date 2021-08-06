@@ -38,6 +38,7 @@
     34 => 'App\\Providers\\EventServiceProvider',
     35 => 'App\\Providers\\RouteServiceProvider',
     36 => 'GrahamCampbell\\Markdown\\MarkdownServiceProvider',
+    37 => 'Intervention\\Image\\ImageServiceProvider',
   ),
   'eager' => 
   array (
@@ -64,6 +65,7 @@
     20 => 'App\\Providers\\EventServiceProvider',
     21 => 'App\\Providers\\RouteServiceProvider',
     22 => 'GrahamCampbell\\Markdown\\MarkdownServiceProvider',
+    23 => 'Intervention\\Image\\ImageServiceProvider',
   ),
   'deferred' => 
   array (
