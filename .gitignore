@@ -56,6 +56,7 @@ Thumbs.db
 /storage/*.key
 /vendor
 /src/vendor
+/src/.env
 .env
 .env.backup
 .phpunit.result.cache

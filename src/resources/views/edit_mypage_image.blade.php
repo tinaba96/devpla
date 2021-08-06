@@ -9,7 +9,8 @@
   <label for="profile_image">プロフィール画像</label>
 
   <label for="profile_image" class="btn">
-    <img src="{{ asset('storage/profiles/'.$user->profile_image) }}" id="img">
+    <!-- <img src="{{ asset('storage/profiles/'.$user->profile_image) }}" id="img"> -->
+    <img src="{{ $user -> profile_image }}" id="img">
     <input id="profile_image" type="file"  name="profile_image" onchange="previewImage(this);">
   </label>
 

@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('edu_background', 2048)->nullable();
             $table->string('work_history', 2048)->nullable();
             $table->string('achieve_quali', 2048)->nullable();
+            $table->dateTime('last_login_at')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
         });

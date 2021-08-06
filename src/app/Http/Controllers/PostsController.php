@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Images;
+use Storage;
 
 
 class PostsController extends Controller{
@@ -58,14 +59,23 @@ class PostsController extends Controller{
 
 		if($images) {
 			//saving uploaded image
-			$path = $images->store('uploads',"public");
-			//store in DB
+			// $path = $images->store('uploads',"public");
+			// //store in DB
+			// if($path){
+			// 	Images::create([
+			// 		"file_name" => $images->getClientOriginalName(),
+			// 		"file_path" => $path
+			// 	]);
+			// }
+            $path = Storage::disk('s3')->putFile('devpla', $images, 'public');
+
 			if($path){
 				Images::create([
 					"file_name" => $images->getClientOriginalName(),
-					"file_path" => $path
+					"file_path" => Storage::disk('s3')->url($path)
 				]);
 			}
+
     }
     }
 

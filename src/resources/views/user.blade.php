@@ -13,7 +13,7 @@
                 <h3><font color="blue">{{ $user->name }} </font></h3>
                 @endif
 
-                <img width="100%" src="{{ asset('storage/profiles/'.$user->profile_image) }}" alt="profile_image">
+	            <img width="200px" src="{{ $user -> profile_image }}" alt="profile_image">
                 @if (Auth::user()->id == $user->id)
                 <a href =  {{ url('/mypage/image/edit/') }}> 写真の編集 </a>
                 @endif

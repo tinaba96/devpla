@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+// use Illuminate\Support\Facades\Storage;
 use App\User;
+use Storage;
+use Image;
+use InterventionImage;
+
 
 class HomeController extends Controller
 {
@@ -86,15 +90,48 @@ class HomeController extends Controller
         $user = Auth::user();
         $form = $request->all();
 
-        $profileImage = $request->file('profile_image');
-        if ($profileImage != null) {
-            $form['profile_image'] = $this->saveProfileImage($profileImage, $id); // return file name
+
+
+        if ($request->file('profile_image')){
+            $request->validate([
+                'profile_image' => 'required|file|image|mimes:png,jpeg',
+            ]);
+    
+            $profileImage = $request->file('profile_image');
+
+            if ($profileImage != null) {
+                // // get instance
+                // $img = Image::make($profileImage);
+                // // resize
+                // $img->fit(100, 100, function($constraint){
+                //     $constraint->upsize(); 
+                // });
+
+                // $img = InterventionImage::make($profileImage)->resize(100, null, function ($constraint) {$constraint->aspectRatio();})->encode('jpg',80);
+
+
+
+                // バケットの`myprefix`フォルダへアップロード
+                $path = Storage::disk('s3')->putFile('devpla', $profileImage, 'public');
+                // アップロードした画像のフルパスを取得
+                $user->profile_image = Storage::disk('s3')->url($path);
+                // $user->update([
+                //     'profile_image' => Storage::disk('s3')->url($path)
+                // ]);
+            }
+
         }
 
-        unset($form['_token']);
-        unset($form['_method']);
-        $user->fill($form)->save();
-        return redirect('/mypage');
+
+        // if ($profileImage != null) {
+        //     $form['profile_image'] = $this->saveProfileImage($profileImage, $id); // return file name
+        // }
+
+        // unset($form['_token']);
+        // unset($form['_method']);
+        $user->save();
+        // return redirect('/mypage');
+        return view('mypage');
     }
 
     private function saveProfileImage($image, $id) {
@@ -104,12 +141,19 @@ class HomeController extends Controller
         $img->fit(100, 100, function($constraint){
             $constraint->upsize(); 
         });
-        // save
-        $file_name = 'profile_'.$id.'.'.$image->getClientOriginalExtension();
-        $save_path = 'public/profiles/'.$file_name;
-        Storage::put($save_path, (string) $img->encode());
+        // // save
+        // $file_name = 'profile_'.$id.'.'.$image->getClientOriginalExtension();
+        // $save_path = 'public/profiles/'.$file_name;
+        // Storage::put($save_path, (string) $img->encode());
+
+
+        // バケットの`myprefix`フォルダへアップロード
+        $path = Storage::disk('s3')->putFile('devpla', $img, 'public');
+        // アップロードした画像のフルパスを取得
+        $img_path = Storage::disk('s3')->url($path);
+
         // return file name
-        return $file_name;
+        return $img_path;
     }
 
 }
