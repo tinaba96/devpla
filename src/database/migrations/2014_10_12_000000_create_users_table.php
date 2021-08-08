@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->string('role')->nullable();
-            $table->string('profile_image')->default('default.png');
+            $table->string('profile_image')->default(' https://snowman-1.s3.ap-northeast-1.amazonaws.com/devpla/default.png');
             $table->string('my_skills', 2048)->nullable();
             $table->string('topics_interest', 2048)->nullable();
             $table->string('edu_background', 2048)->nullable();

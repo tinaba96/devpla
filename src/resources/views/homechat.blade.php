@@ -56,7 +56,7 @@
               <dd class="flex justify-end sm:justify-start lg:justify-end xl:justify-start -space-x-2">
                 @foreach($members as $member)
                     @if($group->id == $member->chatgroup_id)
-                    <img src="{{ asset('storage/profiles/'.$member->users()->first()->profile_image) }}" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" />
+                    <img src="{{ $member->users()->first()->profile_image }}" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" />
                     @endif
                 @endforeach
               </dd>
