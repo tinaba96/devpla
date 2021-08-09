@@ -7,6 +7,7 @@ use App\Images;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -19,6 +20,7 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
@@ -30,6 +32,7 @@ $factory->define(User::class, function (Faker $faker) {
         'edu_background' => Str::random(20),
         'work_history' => Str::random(30),
         'achieve_quali' => Str::random(10),
+        'profile_image' => 'https://i.pravatar.cc/50?img='.Str::random(10),
     ];
 });
 

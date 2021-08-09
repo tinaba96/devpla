@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('Revowater1108'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-            'profile_image' => 'https://snowman-1.s3.ap-northeast-1.amazonaws.com/devpla/abe.jpeg',
+            'profile_image' => 'https://i.pravatar.cc/300',
         ]);
 
         DB::table('users')->insert([
