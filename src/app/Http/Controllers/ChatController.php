@@ -33,7 +33,6 @@ class ChatController extends Controller
     }
 
     public function group_list(){
-
         return view('homechat');
     }
 
@@ -80,13 +79,14 @@ class ChatController extends Controller
         // dd($chatgroup->id);
 
         $members = $chatgroup->user_chatgroup()->get();
+        $groups = Chatgroup::all();
 
         // dd($members->first()->users()->first()->name);
 
         // $mebers = User_chatgroup::where('chatgroup_id', '1')->first()->user_id;
         // dd(Auth::user()->user_chatgroup()->where('chatgroup_id', i1)->exists());
         // $users = User::find();
-        return view('chatgroup_members', compact('chatgroup','members'));
+        return view('chatgroup_members', compact('chatgroup','members', 'groups'));
     }
 
     public function bemember(Chatgroup $chatgroup){
