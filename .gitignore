@@ -53,6 +53,8 @@ Thumbs.db
 /node_modules
 /public/hot
 /public/storage
+/public/css
+/public/js
 /storage/*.key
 /vendor
 /src/vendor
