@@ -35,7 +35,7 @@
                             {!! nl2br(Str::limit($post->body_html, 200)) !!} 
                         </p>
 	@foreach ($images as $image)
-		    @if ($post->created_at == $image->created_at)
+		    @if (intval($post->created_at->format('i'))*60 + intval($post->created_at->format('s')) == intval($image->created_at->format('i'))*60 + intval($image->created_at->format('s')) || ((intval($post->created_at->format('i'))*60 + intval($post->created_at->format('s')))+1) == intval($image->created_at->format('i'))*60 + intval($image->created_at->format('s')) || ((intval($post->created_at->format('i'))*60 + intval($post->created_at->format('s')))+2) == intval($image->created_at->format('i'))*60 + intval($image->created_at->format('s')))
 			<p>{{ $image->file_name }}</p>
 			<!-- <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"/> -->
 	        <img src="{{ $image -> file_path }}" style="width:100%;">

@@ -74,7 +74,7 @@
             @endforeach
         </div>
         <div class="pb-6 px-4 flex-none">
-                <form method="POST" action='/homechat/{{ $chatgroup->id }}/'>
+                <form method="POST" action='/homechat/{{ $chatgroup->id }}'>
                 @csrf
                     <div class="flex rounded-lg  overflow-hidden">
                         <textarea class="form-control" id="chat" name="chat" placeholder="メッセージを入力 (Shift+Enter)" aria-label="With textarea" onkeydown="if(event.shiftKey&&event.keyCode==13){document.getElementById('submit').click();return false};"></textarea>
