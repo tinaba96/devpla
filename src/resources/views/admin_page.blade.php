@@ -14,6 +14,7 @@
 @extends('layout')
 
 @section('content')
+<body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/bg.jpeg); background-size:cover;">
 
 <div class="container">
     <h1 style="color:green; text-align:center;">アクティブユーザー</h1>

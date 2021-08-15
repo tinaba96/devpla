@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+<body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/bg.jpeg); background-size:cover;">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

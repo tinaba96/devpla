@@ -2,6 +2,7 @@
 
 @section('content')
 
+<body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/bg.jpeg); background-size:cover;">
 <a class = text-white href="{{ route('posts.index') }}">投稿画面に戻る</a>
 <h1 style="color:green; text-align:center;  font-size: 2.25rem;">写真一覧</h1>
 <hr />

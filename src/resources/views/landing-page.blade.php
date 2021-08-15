@@ -20,7 +20,7 @@
 }
 </style>
 
-<body style="background:url({{ asset('images/Devpla_LandingPage.png') }}); 
+<body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/DevPla_LandingPage.png); 
 background-size:cover;">
 
 <br>

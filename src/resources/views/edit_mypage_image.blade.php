@@ -2,6 +2,7 @@
 
 @section('content')
 
+<body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/bg.jpeg); background-size:cover;">
 <form method='POST' action="{{ route('update_user_image', ['user' => $user->id]) }}" enctype="multipart/form-data">
   @csrf
   @method('PATCH')

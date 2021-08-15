@@ -43,16 +43,16 @@ class ChatController extends Controller
 
         // dd(Chatgroup::count());
 
-       User_chatgroup::create([
-        'user_id' => Auth::user()->id,
-        'chatgroup_id' => Chatgroup::count()
-    ]);
 
         $groups = Chatgroup::all();
         $images = Images::all();
         $users = Auth::user();
         // dd($members);    
         $members = User_chatgroup::all();
+        User_chatgroup::create([
+            'user_id' => Auth::user()->id,
+            'chatgroup_id' => 10*(Chatgroup::count())-5
+        ]);
        return view('homechat', compact('groups', 'images','users','members'));
     }
 

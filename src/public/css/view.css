@@ -63,7 +63,7 @@
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background:url('/images/bg.jpeg');
+  background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/default.jpeg);
 }
 
 .newd{

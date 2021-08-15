@@ -5,6 +5,7 @@
 </head>
 
 @section('content')
+<body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/bg.jpeg); background-size:cover;">
     <div class="container mt-4">
     <h1 style="color:green; text-align:center;">投稿一覧</h1>
 
@@ -35,7 +36,7 @@
                             {!! nl2br(Str::limit($post->body_html, 200)) !!} 
                         </p>
 	@foreach ($images as $image)
-		    @if ($post->created_at == $image->created_at)
+		    @if (intval($post->created_at->format('i'))*60 + intval($post->created_at->format('s')) == intval($image->created_at->format('i'))*60 + intval($image->created_at->format('s')) || ((intval($post->created_at->format('i'))*60 + intval($post->created_at->format('s')))+1) == intval($image->created_at->format('i'))*60 + intval($image->created_at->format('s')) || ((intval($post->created_at->format('i'))*60 + intval($post->created_at->format('s')))+2) == intval($image->created_at->format('i'))*60 + intval($image->created_at->format('s')))
 			<p>{{ $image->file_name }}</p>
 			<!-- <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"/> -->
 	        <img src="{{ $image -> file_path }}" style="width:100%;">
@@ -66,6 +67,7 @@
                     <div class="card-footer">
                         <span class="mr-2">
                             投稿日時 {{ $post->created_at->format('Y.m.d') }}
+                            投稿日時 {{ intval($post->created_at->format('s'))+1 }}
                         </span>
                         @if ($post->comments->count())
                             <span class="badge badge-primary">

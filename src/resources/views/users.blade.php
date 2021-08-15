@@ -2,6 +2,7 @@
 
 @section('content')
 
+<body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/bg.jpeg); background-size:cover;">
 <div class="container">
     <h1><font color='blue'> ユーザー一覧</font></h1>
     <div class="row justify-content-center">

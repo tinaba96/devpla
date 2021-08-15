@@ -2,6 +2,7 @@
 
 @section('content')
 
+<body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/bg.jpeg); background-size:cover;">
 @if ($follows -> isEmpty())
     <h1 align='center'>
         <font color="white"> No one </font>

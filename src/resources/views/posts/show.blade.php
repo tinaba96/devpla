@@ -5,6 +5,7 @@
 </head>
 
 @section('content')
+<body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/bg.jpeg); background-size:cover;">
     <div class="container mt-4">
         <div class="border p-4 newd">
             <h1 class="h5 mb-4">
