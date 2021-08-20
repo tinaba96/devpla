@@ -53,7 +53,15 @@ class ChatController extends Controller
         $users = Auth::user();
         // dd($members);    
         $members = User_chatgroup::all();
-       return view('homechat', compact('groups', 'images','users','members'));
+        // 二重送信対策
+        $request->session()->regenerateToken();
+    //    return view('homechat', compact('groups', 'images','users','members'));
+       return redirect()->route('chat', [
+        'groups' => $groups,
+        'images' => $images,
+        'users' => $users,
+        'members' => $members,
+    ]);
     }
 
     public function create(){
