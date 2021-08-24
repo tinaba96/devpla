@@ -411,9 +411,11 @@
                 <!-- <span class="text-base">for one user</span> -->
               </div>
               <div class="flex items-center justify-center">
-                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                  登録する
-                </button>
+                <a href="/register">
+                  <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    登録する
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -434,9 +436,11 @@
                 <!-- <span class="text-base">/ per user</span> -->
               </div>
               <div class="flex items-center justify-center">
-                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                  登録する
-                </button>
+                <a href="/register">
+                  <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    登録する
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -457,9 +461,11 @@
                 <!-- <span class="text-base">/ per user</span> -->
               </div>
               <div class="flex items-center justify-center">
-                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                  登録する
-                </button>
+                <a href="/register">
+                  <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    登録する
+                  </button>
+                </a>
               </div>
             </div>
           </div>
@@ -489,9 +495,11 @@
           </div>
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
             <div class="flex items-center justify-center">
-              <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                参加する
-              </button>
+              <a href="/register">
+                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                  参加する
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -511,9 +519,11 @@
           </div>
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
             <div class="flex items-center justify-center">
-              <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                参加する
-              </button>
+              <a href="/register">
+                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                  参加する
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -533,9 +543,11 @@
           </div>
           <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
             <div class="flex items-center justify-center">
-              <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                参加する
-              </button>
+              <a href="/register">
+                <button class="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                  参加する
+                </button>
+              </a>
             </div>
           </div>
         </div>
@@ -574,9 +586,11 @@
       <h3 class="my-4 text-3xl leading-tight">
         不明点等あればご連絡ください。
       </h3>
+      <a href="/register">
       <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
         質問する
       </button>
+      </a>
     </section>
     <!--Footer-->
     <footer class="bg-white">
