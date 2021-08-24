@@ -30,7 +30,7 @@ $factory->define(User::class, function (Faker $faker) {
         'my_skills' => Str::random(30),
         'topics_interest' => Str::random(10),
         'edu_background' => Str::random(20),
-        'work_history' => Str::random(30),
+        'work_history' => $faker->company(),
         'achieve_quali' => Str::random(10),
         'profile_image' => 'https://i.pravatar.cc/50?img='.Str::random(10),
     ];

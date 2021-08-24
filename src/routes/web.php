@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     //コメント作成
     Route::post('/post/{post_id}', 'CommentsController@store')->name('comments.store');
+
     
     // //posting images
     // Route::post('upload', 'ImagesController@upload')->name('upload');
@@ -140,6 +141,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/homechat/{chatgroup}', 'ChatController@add');
     Route::get('/homechat/{chatgroup}/members', 'ChatController@members');
     Route::post('/homechat/{chatgroup}/bemember', 'ChatController@bemember');
+
+
 
     Route::get('/adminhome', 'AdminController@home')->name('admin');
 

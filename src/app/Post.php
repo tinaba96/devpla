@@ -11,13 +11,19 @@ class Post extends Model
         'title',
         'body',
         'user_id', //予期せぬ代入を防ぐことができるらしい
-	'file_name',
+        'file_name',
        	'file_path'
     ];
 
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+         return $this->belongsTo('App\User');
+        // return $this->belongsTo('App\User', 'user_id');
 
     }
 
@@ -25,11 +31,6 @@ class Post extends Model
     {
         return $this->belongsToMany('App\User')->withTimestamps();
         // return $this->belongsTo('App\User', 'user_id');
-    }
-
-    public function comments()
-    {
-        return $this->hasMany('App\Comment');
     }
 
     public function getBodyHtmlAttribute($value)
