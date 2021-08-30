@@ -22,7 +22,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -119,7 +119,7 @@
 
         @if (Session::has('success'))
             <div class="alert alert-success" role="alert">
-                <strong> {{ Session::get('success') }}</strogn>
+                <strong> {{ Session::get('success') }}</strong>
             </div>
         @elseif (Session::has('error'))
             <div class="alert alert-danger" role="alert">
