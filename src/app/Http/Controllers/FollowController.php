@@ -10,7 +10,6 @@ use App\Follow;
 class FollowController extends Controller
 {
     public function follow($id){
-        
         $follow = Follow::create([
             'user_id' => Auth::user()->id,
             'follow_id' => $id
@@ -19,8 +18,8 @@ class FollowController extends Controller
         return back();
     }
 
-    public function unfollow(){
-        Auth::user()->follows->first->delete();
+    public function unfollow($id){
+        Follow::where('user_id', Auth::id())->where('follow_id', $id)->delete();
         
         return back();
     }

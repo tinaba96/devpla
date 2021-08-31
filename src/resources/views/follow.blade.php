@@ -26,7 +26,7 @@
                         <div align='right' class="col-md-4">
                             @if (Auth::user()->id != $follow->id)
                                 @if (Auth::user()->is_following($follow->id) || Auth::user()->id == $follow->id )
-                                    <form action='/users/ {{ $user->id }}/unfollow' method='POST'>
+                                    <form action='/users/{{ $user->id }}/unfollow' method='POST'>
                                     @csrf
                                     @method('DELETE')
                                     <button type='submit' class='btn btn-warning'> Unfollow </button>
