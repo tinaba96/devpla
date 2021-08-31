@@ -1,9 +1,6 @@
-@extends('layout')
+@extends('layouts.app')
 
 
-<head>
-<script src="https://kit.fontawesome.com/7c7377020a.js" crossorigin="anonymous"></script>
-</head>
 
 @section('content')
 @auth
@@ -99,6 +96,7 @@
         </div>
 
     <div class ="hidden-comment elem4">
+    {{-- <div class =" elem4"> --}}
         <div >
             <!-- コメント入力バーの実装始まり-->
             <form class="mb-4" method="POST" action="{{route('comments.store',['post_id' => $post])}}">
@@ -109,7 +107,7 @@
                     <input
                             id="body"
                             name="body"
-                            class="{form-control{{ $errors->has('body') ? 'is-invalid' : '' }}} w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-full py-3 "
+                            class="{form-control{{ $errors->has('body') ? 'is-invalid' : '' }}} emoji w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-full py-3 "
                             value="{{ old('body') }}"
                             type="text"
                             placeholder="コメントを入力"
@@ -131,7 +129,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             </svg>
                         </button>
-                        <button type="button" class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+                        <button type="button" class="emoji-trigger inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-gray-600">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
@@ -164,28 +162,6 @@
 
 
 @endforeach
-
-
-<script>
-
-var elements = document.getElementsByClassName("elem3");
-var button = document.getElementsByClassName("elem4");
-
-for(let i = 0; i < elements.length; i ++){
-         elements[i].addEventListener('click',function(){
-            if (button[i].classList.contains("hidden-comment") == true){
-                // noneで非表示
-                button[i].classList.remove("hidden-comment");
-            }else if (button[i].classList.contains("hidden-comment") == false){
-                // blockで表示
-                button[i].classList.add("hidden-comment");
-            }else {
-            } });
-}
-
-
-</script>
-
 
 
 @endsection
