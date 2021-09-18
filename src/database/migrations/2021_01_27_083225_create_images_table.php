@@ -15,9 +15,11 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('post_id');
             $table->string('file_name', 100);
             $table->string('file_path', 200);
             $table->timestamps();
+            $table->foreign('post_id')->references('id')->on('posts');
         });
 	if (Schema::hasTable('images')) {
 	   // 
