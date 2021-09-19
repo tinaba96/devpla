@@ -48,7 +48,9 @@
                         </li>
                     </ul>
                     <div class="text-sm" >
+                        @if (Auth::user()->id == $user->id)
                         <a href =  {{ url('/mypage/image/edit/') }}> 写真の編集 </a>
+                        @endif
                     </div>
                 </div>
                 <!-- End of profile card -->
@@ -90,8 +92,13 @@
                             </svg>
                         </span>
                         <span class="tracking-wide font-extrabold">プロフィール</span>
-                        <div class="text-sm"> <a href =  {{ url('/mypage/edit/') }}> 編集 </a></div>
+                        <div class="text-sm"> 
+                            @if (Auth::user()->id == $user->id)
+                            <a href =  {{ url('/mypage/edit/') }}> 編集 </a>
+                            @endif
+                        </div>
                     </div>
+                        
                     <div>
                         <div class="grid md:grid-cols-1 text-sm">
                             <div class="grid grid-cols-3">
@@ -130,7 +137,9 @@
                         Full Information</button> -->
                 </div>
                 <div class = "p-2 text-sm text-right">
+                    @if (Auth::user()->id == $user->id)
                         <a href =  {{ url('user/delete') }}> 退会予定の方はこちら </a>
+                    @endif
                 </div>   
                 <!-- End of about section -->
 
