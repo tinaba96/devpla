@@ -165,7 +165,7 @@ class PostsController extends Controller{
 			//store in DB
 			if($path){
 				Images::create([
-                    "post" => 
+                    "post" => $post_id
 					"file_name" => $images->getClientOriginalName(),
 					"file_path" => $path
 				]);
