@@ -1908,12 +1908,12 @@ var button = document.getElementsByClassName("elem4");
 
 var _loop = function _loop(i) {
   elements[i].addEventListener('click', function () {
-    if (button[i].classList.contains("hidden-comment") == true) {
+    if (button[i].classList.contains("hidden-element") == true) {
       // noneで非表示
-      button[i].classList.remove("hidden-comment");
-    } else if (button[i].classList.contains("hidden-comment") == false) {
+      button[i].classList.remove("hidden-element");
+    } else if (button[i].classList.contains("hidden-element") == false) {
       // blockで表示
-      button[i].classList.add("hidden-comment");
+      button[i].classList.add("hidden-element");
     } else {}
   });
 };
@@ -1939,7 +1939,15 @@ var _loop2 = function _loop2(_i) {
 
 for (var _i = 0; _i < trigger.length; _i++) {
   _loop2(_i);
-}
+} //クラス要素をすべて取得
+//  var test = document.getElementsByClassName("group_member_count")
+//  //クラス要素の子要素をすべて取得
+//  //underfinedと表示されるので、おそらくクラス要素を取得する段階で、どのクラス要素を取得するのか指定してあげる必要があるのでは？
+//  var group_member_count = document.getElementsByClassName("group_member_count").childElementCount;
+//  for(let i = 0; i < test.length; i ++){
+//  console.log(test);
+//  console.log(group_member_count);
+//  document.getElementsByClassName("group_member_count_view").textContent = group_member_count;
 
 /***/ }),
 

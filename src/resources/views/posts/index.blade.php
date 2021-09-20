@@ -95,7 +95,7 @@
             </ul>
         </div>
 
-    <div class ="hidden-comment elem4">
+    <div class ="hidden-element elem4">
     {{-- <div class =" elem4"> --}}
         <div >
             <!-- コメント入力バーの実装始まり-->

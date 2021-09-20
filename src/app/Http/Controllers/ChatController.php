@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Chat;
 use App\User;
@@ -21,20 +22,32 @@ class ChatController extends Controller
         $this->middleware('auth');
     }
 
-    public function home(){
+    public function home(Chatgroup $chatgroup){
         $groups = Chatgroup::all();
         $images = Images::all();
         $users = Auth::user();
         $members = User_chatgroup::all();
+        // dd($members);
+        $group_members = DB::table('chatgroups')  
+             ->leftJoin('User_chatgroups', 'chatgroups.id', '=', 'User_chatgroups.chatgroup_id')
+             ->select('chatgroups.id', 'chatgroups.name', DB::raw("count(User_chatgroups.chatgroup_id) as count"))
+             ->groupBy('chatgroups.id')
+             ->get();
+
+        //  ->groupBy('chatgroups.id')
+        // ->groupBy('User_chatgroup.chatgroup_id')
+        // $group_member_count = User_chatgroup::where('chatgroup_id', $chatgroup->id)->get()->count();
         // $members = User_chatgroup::where('chatgroup_id', 1)->get();
         // dd($chatgroup)
         // dd($members);
-        return view('homechat', compact('groups','images','users','members'));
+        return view('homechat', compact('groups','images','users','members', 'group_members'));
     }
 
     public function group_list(){
         return view('homechat');
     }
+
+
 
     public function store(Request $request){
        Chatgroup::create([
