@@ -56,6 +56,7 @@ class PostsController extends Controller{
 		]);
 
 		$images = $request->file('image');
+        // dd($post->id);
 
 		if($images) {
 			//saving uploaded image
@@ -71,6 +72,7 @@ class PostsController extends Controller{
 
 			if($path){
 				Images::create([
+                    "post_id" => $post->id,
 					"file_name" => $images->getClientOriginalName(),
 					"file_path" => Storage::disk('s3')->url($path)
 				]);
@@ -165,7 +167,7 @@ class PostsController extends Controller{
 			//store in DB
 			if($path){
 				Images::create([
-                    "post" => $post_id
+                    "post_id" => $post_id,
 					"file_name" => $images->getClientOriginalName(),
 					"file_path" => $path
 				]);

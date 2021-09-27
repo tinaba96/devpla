@@ -28,12 +28,10 @@
         </div>
         </div>
         <p class="break-words whitespace-normal text-gray-800 text-sm mt-2 leading-normal md:leading-relaxed">{!! nl2br(Str::limit($post->body_html, 200)) !!}</p>
-        @foreach ($images as $image)
-            @if (intval($post->created_at->format('i'))*60 + intval($post->created_at->format('s')) == intval($image->created_at->format('i'))*60 + intval($image->created_at->format('s')) || ((intval($post->created_at->format('i'))*60 + intval($post->created_at->format('s')))+1) == intval($image->created_at->format('i'))*60 + intval($image->created_at->format('s')) || ((intval($post->created_at->format('i'))*60 + intval($post->created_at->format('s')))+2) == intval($image->created_at->format('i'))*60 + intval($image->created_at->format('s')))
-            <p>{{ $image->file_name }}</p>
-            <img src="{{ $image -> file_path }}" style="width:100%;">
+            @if($post -> image)
+                <p>{{ $post->image->file_name }}</p>
+                <img src="{{ $post->image -> file_path }}" style="width:100%;">
             @endif
-        @endforeach
         <a class="card-link" href="{{ route('posts.show', ['post_id' => $post]) }}">
                 続きを読む
         </a>
