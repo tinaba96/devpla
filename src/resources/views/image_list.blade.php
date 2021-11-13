@@ -8,10 +8,9 @@
 
 @foreach($images as $image)
 <div style="width: 18rem; float:left; margin: 16px;">
-	<p style='color:white;'>{{ $image->file_name }}</p>
-	<!-- <img src="{{ Storage::url($image->file_path) }}" style="width:100%;"/> -->
+	<p style='color:orange;'>{{ $image->file_name }}</p>
 	<img src="{{ $image -> file_path }}" style="width:100%;">
-	<p style='color:white;'>投稿日時 {{ $image->created_at->format('Y.m.d') }}</p>
+	<p style='color:blue;'>投稿日時 {{ $image->created_at->format('Y.m.d') }}</p>
 </div>
 
 @endforeach

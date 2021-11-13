@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/post/{post_id}', 'CommentsController@store')->name('comments.store');
 
     Route::get('/list',
-	[App\Http\Controllers\ImageListController::class, "show"]
+	[App\Http\Controllers\ImagesController::class, "show"]
 	)->name("image_list");
 
     Route::get('/home/like/{id}', 'LikeController@store')->name('like_home');
@@ -56,6 +56,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/post/{post}/unlike', 'LikeController@destroy')->name('unlikes');
 });
 
+<<<<<<< HEAD
+=======
     Route::post('/uploads',
 	[App\Http\Controllers\ImagesController::class, "upload"]
 	)->name("upload_image");
@@ -64,6 +66,7 @@ Route::group(['middleware' => 'auth'], function() {
 	[App\Http\Controllers\ImageListController::class, "show"]
 	)->name("image_list");
 
+>>>>>>> 182fd5e1dc8a3420b70f31438ece188165d9b53d
     Route::get('/home/like/{id}', 'LikeController@store')->name('like_home');
     Route::get('/home/unlike/{id}', 'LikeController@destroy')->name('unlike_home');
     
