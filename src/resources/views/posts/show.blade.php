@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 <head>
 <script src="https://kit.fontawesome.com/7c7377020a.js" crossorigin="anonymous"></script>

@@ -1,5 +1,5 @@
 
-.hidden-comment{
+.hidden-element{
   display:none;
 }
 /* マイページ用始まり */
@@ -22,10 +22,18 @@
 
 /* マイページ用終わり */
 
+.emoji-picker{
+  /* --emoji-per-row:8;  */
+  /* --row-count:6;  */
+  --emoji-size:1.2em !important;
+  position:absolute;
+  bottom:30px;
+}
 
-
-
-
+/* テキストと絵文字が重なる現象を回避するCSS */
+/* .emoji{
+  letter-spacing: 0.3em;
+} */
 
 .post-card{
   margin-top: 20px;

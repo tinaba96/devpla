@@ -50,7 +50,6 @@ Thumbs.db
 
 /db
 
-/node_modules
 /public/hot
 /public/storage
 /storage/*.key
@@ -64,8 +63,4 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-
-#その他
-!src/app/Http/Requests/CommentRequest.php
-!src/resources/views/components/comment_contents.blade.php
 

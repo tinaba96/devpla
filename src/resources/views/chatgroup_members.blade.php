@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -48,7 +48,7 @@
 </a>
 @endforeach
 <div class="flex flex-col justify-center items-center h-20">
-    @if (!Auth::user()->user_chatgroup()->where('chatgroup_id', $chatgroup->id)->exists() )
+    @if ($members->where('user_id', Auth::user()->id)->isEmpty())
         <form action='/homechat/{{ $chatgroup->id }}/bemember' method='POST'>
         @csrf
         <button type='submit' class='btn btn-primary'> メンバーになる </button>

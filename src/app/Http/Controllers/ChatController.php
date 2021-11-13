@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Chat;
 use App\User;
@@ -21,15 +22,11 @@ class ChatController extends Controller
         $this->middleware('auth');
     }
 
-    public function home(){
+    public function home(Chatgroup $chatgroup){
         $groups = Chatgroup::all();
-        $images = Images::all();
-        $users = Auth::user();
         $members = User_chatgroup::all();
-        // $members = User_chatgroup::where('chatgroup_id', 1)->get();
-        // dd($chatgroup)
-        // dd($members);
-        return view('homechat', compact('groups','images','users','members'));
+
+        return view('homechat', compact('groups','members'));
     }
 
     public function group_list(){
@@ -39,27 +36,18 @@ class ChatController extends Controller
     public function store(Request $request){
        Chatgroup::create([
            'name' => $request->name
-       ]);
-
-        // dd(Chatgroup::count());
-
+           ]);
        User_chatgroup::create([
         'user_id' => Auth::user()->id,
         'chatgroup_id' => Chatgroup::count()
-    ]);
+        ]);
 
         $groups = Chatgroup::all();
-        $images = Images::all();
-        $users = Auth::user();
-        // dd($members);    
         $members = User_chatgroup::all();
         // 二重送信対策
         $request->session()->regenerateToken();
-    //    return view('homechat', compact('groups', 'images','users','members'));
-       return redirect()->route('chat', [
+       return redirect()->route('homechat', [
         'groups' => $groups,
-        'images' => $images,
-        'users' => $users,
         'members' => $members,
     ]);
     }
@@ -69,32 +57,18 @@ class ChatController extends Controller
     }
 
     public function chat(Chatgroup $chatgroup, Chat $chats){
-        // dd($chatgroup->id);
         $members = User_chatgroup::where('chatgroup_id', $chatgroup->id)->get();
-        // dd($members->count());
-        $chats = Chat::all();
-        foreach($members as $member){
-            if(Auth::user()->id == $member->user_id || Auth::user()->role == 'admin'){
-                return view('chat', compact('chatgroup', 'chats', 'members'));
-            }
+        $chats = Chat::where('chatgroup_id', $chatgroup->id)->get();
+        if($members->where('user_id', Auth::user()->id)->isEmpty() || Auth::user()->role == 'admin'){
+            return back()->with('error', 'あなたはメンバーではありません。');
+        }else{
+            return view('chat', compact('chatgroup', 'chats', 'members'));
         }
-        return back()->with('error', 'あなたはメンバーではありません。');
-
     }
 
     public function members(Chatgroup $chatgroup){
-        // $chatgroup = Chatgroup::all();
-        // dd($chatgroup->id);
-
         $members = $chatgroup->user_chatgroup()->get();
-        $groups = Chatgroup::all();
-
-        // dd($members->first()->users()->first()->name);
-
-        // $mebers = User_chatgroup::where('chatgroup_id', '1')->first()->user_id;
-        // dd(Auth::user()->user_chatgroup()->where('chatgroup_id', i1)->exists());
-        // $users = User::find();
-        return view('chatgroup_members', compact('chatgroup','members', 'groups'));
+        return view('chatgroup_members', compact('chatgroup','members'));
     }
 
     public function bemember(Chatgroup $chatgroup){
@@ -104,17 +78,6 @@ class ChatController extends Controller
        ]);
         return back()->with('success', 'メンバーに追加されました。');
     }
-
-    /**
-     * show the application dashbord
-     * 
-     * return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index(){
-        $chats = Chat::get();
-        return view('chat', ['chats' => $chats]);
-    }
-
 
     public function add(Request $request, Chatgroup $chatgroup){
         $user = Auth::user();

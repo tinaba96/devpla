@@ -6,7 +6,7 @@
 </style>
 
 
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 

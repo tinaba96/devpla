@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 
@@ -45,7 +45,7 @@
             <div class="flex items-center mb-3 px-4">
                 <span class="bg-green rounded-full block w-2 h-2 mr-2"></span>
                 @foreach ($members as $member)
-                <span class="text-white opacity-75">{{ $member->users()->first()->name }}
+                    <span class="opacity-75">{{ $member->users()->first()->name }}
                 @endforeach
                  <span class="text-grey text-sm">(you)</span></span>
             </div>
@@ -63,14 +63,8 @@
         <!-- Chat messages -->
         <div class="px-6 py-4 flex-1 overflow-y-scroll">
             <!-- A message -->
-            @foreach ($chats as $item)
-            @foreach ($members as $member)
-                    @if($item->chatgroup_id == $chatgroup->id)
-                    @if($member->user_id == $item->login_id)
-                    @include('components.chat',['item' => $item])
-                    @endif
-                    @endif
-            @endforeach
+            @foreach ($chats as $chat)
+                @include('components.chat',['item' => $chat])
             @endforeach
         </div>
         <div class="pb-6 px-4 flex-none">
