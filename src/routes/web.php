@@ -13,15 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
-
-// Route::get('index', 'PostsController@index')->name('top');
-
-
-
-
 // vueのテスト用↓
 Route::get('/test', function () {
     return view('welcome');
@@ -29,14 +20,10 @@ Route::get('/test', function () {
 
 Route::get('/', 'UsersController@lp')->name('lp');
 
-
 Auth::routes();
-
-
 
 //投稿フォームページ
 Route::group(['middleware' => 'auth'], function() {
-        
     
     //投稿一覧確認ページ
     Route::get('/homeposts', 'PostsController@index')->name('posts.index');
@@ -44,7 +31,6 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/post', 'PostsController@showCreateForm')->name('posts.create');
     Route::post('/post', 'PostsController@create');
-
 
     //投稿詳細確認ページ
     Route::get('/post/{post_id}', 'PostsController@show')->name('posts.show');
@@ -59,24 +45,9 @@ Route::group(['middleware' => 'auth'], function() {
     //コメント作成
     Route::post('/post/{post_id}', 'CommentsController@store')->name('comments.store');
 
-    
-    // //posting images
-    // Route::post('upload', 'ImagesController@upload')->name('upload');
-    // Route::get('/images/', 'ImagesController@index');
-
-
-    // Route::get('/form',
-	// [App\Http\Controllers\ImagesController::class, "show"]
-	// )->name("upload_form");
-
-    // Route::post('/uploads',
-	// [App\Http\Controllers\ImagesController::class, "upload"]
-	// )->name("upload_image");
-
     Route::get('/list',
 	[App\Http\Controllers\ImageListController::class, "show"]
 	)->name("image_list");
-
 
     Route::get('/home/like/{id}', 'LikeController@store')->name('like_home');
     Route::get('/home/unlike/{id}', 'LikeController@destroy')->name('unlike_home');
@@ -85,10 +56,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/post/{post}/unlike', 'LikeController@destroy')->name('unlikes');
 });
 
-    // Route::get('/form',
-	// [App\Http\Controllers\ImagesController::class, "show"]
-	// )->name("upload_form");
-
     Route::post('/uploads',
 	[App\Http\Controllers\ImagesController::class, "upload"]
 	)->name("upload_image");
@@ -96,7 +63,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/list',
 	[App\Http\Controllers\ImageListController::class, "show"]
 	)->name("image_list");
-
 
     Route::get('/home/like/{id}', 'LikeController@store')->name('like_home');
     Route::get('/home/unlike/{id}', 'LikeController@destroy')->name('unlike_home');
@@ -122,18 +88,15 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/users/{user}', 'HomeController@user');
     
-
     Route::Post('/users/{followed_id}/follow', 'FollowController@follow');
     Route::Delete('/users/{followed_id}/unfollow', 'FollowController@unfollow');
 
     Route::get('/users/{id}/following', 'FollowController@following');
     Route::get('/users/{id}/followers', 'FollowController@followers');
 
-    // Route::post('/add', 'ChatController@add')->name('add');
-    // Route::get('/homechat', 'ChatController@index')->name('chat');
     Route::get('/result/ajax', 'ChatController@getData');
 
-    Route::get('/homechat', 'ChatController@home')->name('chat');
+    Route::get('/homechat', 'ChatController@home')->name('homechat');
 
     Route::post('/homechat', 'ChatController@store');
     Route::get('/homechat/create', 'ChatController@create');
@@ -141,8 +104,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/homechat/{chatgroup}', 'ChatController@add');
     Route::get('/homechat/{chatgroup}/members', 'ChatController@members');
     Route::post('/homechat/{chatgroup}/bemember', 'ChatController@bemember');
-
-
 
     Route::get('/adminhome', 'AdminController@home')->name('admin');
 

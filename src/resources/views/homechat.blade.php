@@ -56,17 +56,13 @@
               {{-- <dd class="flex justify-end sm:justify-start lg:justify-end xl:justify-start -space-x-2"> --}}
 
               <dd class="flex flex-row-reverse justify-end mt-10">
-                @foreach($group_members as $group_member)
-                  @if($group->id == $group_member->id)
-                  @if($group_member -> count  > 5 )
-                    <div class="flex relative w-10 h-10 bg-gray-500 justify-center items-center m-1 mr-2 -ml-3 rounded-full border-r-2 border-white text-xl text-white">
-                      <div>
-                        +{{  ($group_member -> count) -5 }}  
-                      </div>
+                @if($members->where('chatgroup_id', $group->id)->count() > 5)
+                  <div class="flex relative w-10 h-10 bg-gray-500 justify-center items-center m-1 mr-2 -ml-3 rounded-full border-r-2 border-white text-xl text-white">
+                    <div>
+                      +{{  $members->where('chatgroup_id', $group->id)->count() -5 }}  
                     </div>
-                  @endif
-                  @endif
-                @endforeach
+                  </div>
+                @endif
 
                 @foreach($members->where('chatgroup_id', $group->id) as $member)
                   <a href="{{ url('/users/'. $member->users()->first()->id) }}" class="z-10">
