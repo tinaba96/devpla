@@ -13,7 +13,6 @@ class AdminController extends Controller
 {
     public function home(){
         $users = User::orderBy('updated_at', 'desc')->get();
-        // dd($users);
         return view('admin_page', compact('users'));
     }
 }

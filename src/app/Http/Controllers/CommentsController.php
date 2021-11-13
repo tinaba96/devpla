@@ -17,7 +17,6 @@ class CommentsController extends Controller
 
     public function store(CommentRequest $request)
     {
-        //$post = Post::find($request->post_id);  //まず該当の投稿を探す
         $posts = Post::find($request->post_id);  //まず該当の投稿を探す
         $comment = new Comment;          //commentのインスタンスを作成
         $comment -> body    = $request -> body;
@@ -25,8 +24,6 @@ class CommentsController extends Controller
         $comment -> post_id = $request -> post_id;
         $comment -> save();
 
-        //return view('posts.index', compact('posts'));  //リターン先は該当の投稿詳細ページ
-        //return view('posts.index', ['post_id' => $post->id]);  
         return redirect()->route('posts.index', ['post_id' => $posts->id]);
     }
 
