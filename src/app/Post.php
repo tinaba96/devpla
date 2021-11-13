@@ -20,6 +20,11 @@ class Post extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public function image()
+    {
+        return $this->hasOne('App\Images');
+    }
+
     public function user()
     {
          return $this->belongsTo('App\User');
@@ -38,7 +43,6 @@ class Post extends Model
         return $this->body ? Markdown::convertToHtml(e($this->body)) : NULL;
     }
     //アクセサの中でエスケープ処理定義
-
 
     public function favorite_users()
     {

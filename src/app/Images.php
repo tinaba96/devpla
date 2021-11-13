@@ -11,6 +11,11 @@ class Images extends Model
 
 	protected $table = "images";
 	protected $fillable = [
-		'file_name', 'file_path'
+		'post_id', 'file_name', 'file_path'
 	];
+
+	public function post()
+    {
+        return $this->belongsTo('App\Post');
+    }
 }
