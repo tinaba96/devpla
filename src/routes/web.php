@@ -98,4 +98,3 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/homechat/{chatgroup}/bemember', 'ChatController@bemember');
 
     Route::get('/adminhome', 'AdminController@home')->name('admin');
-

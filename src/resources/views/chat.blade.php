@@ -45,7 +45,9 @@
             <div class="flex items-center mb-3 px-4">
                 <span class="bg-green rounded-full block w-2 h-2 mr-2"></span>
                 @foreach ($members as $member)
-                    <span class="opacity-75">{{ $member->users()->first()->name }}
+                    @if($member->users()->exists())
+                        <span class="opacity-75">{{ $member->users()->first()->name }}
+                    @endif
                 @endforeach
                  <span class="text-grey text-sm">(you)</span></span>
             </div>

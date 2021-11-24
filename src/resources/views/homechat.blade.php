@@ -39,9 +39,7 @@
 
         <div  class="z-0 hover:bg-blue-500 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200 bg-white ">
           <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
-            <div>
-              <dt class="sr-only">Title</dt>
-              <dd class="group-hover:text-blue leading-6 font-medium text-black">
+            <div> <dt class="sr-only">Title</dt> <dd class="group-hover:text-blue leading-6 font-medium text-black">
                 {{ $group->name }}
               </dd>
             </div>
@@ -65,9 +63,13 @@
                 @endif
 
                 @foreach($members->where('chatgroup_id', $group->id) as $member)
+                  @if($member->users()->exists())
                   <a href="{{ url('/users/'. $member->users()->first()->id) }}" class="z-10">
                     <img src="{{ $member->users()->first()->profile_image }}" width="48" height="48" class="group_member_count flex relative w-10 h-10 rounded-full border-2 border-white" >
                   </a>
+                  @else
+                    @continue
+                  @endif
                   @if($loop->index == 4)
                     @break
                   @endif
