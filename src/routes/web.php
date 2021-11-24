@@ -45,16 +45,13 @@ Route::group(['middleware' => 'auth'], function() {
     //コメント作成
     Route::post('/post/{post_id}', 'CommentsController@store')->name('comments.store');
 
-    Route::get('/list',
-	[App\Http\Controllers\ImagesController::class, "show"]
-	)->name("image_list");
+    Route::get('/list', 'ImagesController@show')->name("image_list");
 
     Route::get('/home/like/{id}', 'LikeController@store')->name('like_home');
     Route::get('/home/unlike/{id}', 'LikeController@destroy')->name('unlike_home');
     
     Route::post('/post/{post}/like', 'LikeController@store')->name('likes');
     Route::post('/post/{post}/unlike', 'LikeController@destroy')->name('unlikes');
-});
 
     Route::get('/home/like/{id}', 'LikeController@store')->name('like_home');
     Route::get('/home/unlike/{id}', 'LikeController@destroy')->name('unlike_home');
@@ -69,8 +66,6 @@ Route::group(['middleware' => 'auth'], function() {
 
     //ユーザー削除
     Route::resource('users','UsersController',['only'=>['show','destroy']]); //destroyを追記
-    // Route::delete('/post/{post_id}', 'UsersController@destroy')->name('posts.destroy');
-    // Route::delete('/post/{post_id}', 'UsersController@destroy')->name('posts.destroy');
     Route::get('/user/delete','UsersController@delete_confirm')->name('users.delete_confirm'); //警告画面に飛ばしたいため追記
 
     Route::get('/mypage/image/edit', 'HomeController@edit_image');
@@ -98,3 +93,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/homechat/{chatgroup}/bemember', 'ChatController@bemember');
 
     Route::get('/adminhome', 'AdminController@home')->name('admin');
+
+
+});
