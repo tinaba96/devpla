@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->dateTime('last_login_at')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
+            $table->softDeletes();
         });
     }
 
@@ -41,9 +42,5 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
-        // Schema::dropIfExists('posts');
-        // Schema::dropIfExists('post_user');
-        // Schema::dropIfExists('images');
-        // Schema::dropIfExists('likes');
     }
 }
