@@ -19,7 +19,6 @@
         <div class="ml-2">
             <div class="text-sm ">
             <span class="font-semibold">{{ optional($post->user()->first())->name }}</span>
-            <span class="text-gray-500"> • 1st</span>
             </div>
             <div class="text-gray-500 text-xs ">{{ optional($post->user()->first())->work_history }}</div>
         </div>
