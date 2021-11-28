@@ -28,14 +28,12 @@ class Post extends Model
     public function user()
     {
          return $this->belongsTo('App\User');
-        // return $this->belongsTo('App\User', 'user_id');
 
     }
 
     public function users()
     {
-        return $this->belongsToMany('App\User')->withTimestamps();
-        // return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsToMany('App\User', 'user_posts')->withTimestamps();
     }
 
     public function getBodyHtmlAttribute($value)
