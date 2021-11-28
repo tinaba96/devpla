@@ -15,13 +15,13 @@
     <div class="bg-gray-100 p-3 flex items-start justify-center w-screen  ">
     <div class="bg-white border shadow-sm px-4 py-3 my-1 rounded-lg max-w-lg w-3/4">
         <div class="flex items-center">
-        <img class="h-12 w-12 rounded-full" src="{{ $post->user()->first()->profile_image }}">
+        <img class="h-12 w-12 rounded-full" src="{{ optional($post->user()->first())->profile_image }}">
         <div class="ml-2">
             <div class="text-sm ">
-            <span class="font-semibold">{{ $post->user()->first()->name }}</span>
+            <span class="font-semibold">{{ optional($post->user()->first())->name }}</span>
             <span class="text-gray-500"> • 1st</span>
             </div>
-            <div class="text-gray-500 text-xs ">{{ $post->user()->first()->work_history }}</div>
+            <div class="text-gray-500 text-xs ">{{ optional($post->user()->first())->work_history }}</div>
         </div>
         </div>
         <p class="break-words whitespace-normal text-gray-800 text-sm mt-2 leading-normal md:leading-relaxed">{!! nl2br(Str::limit($post->body_html, 200)) !!}</p>
@@ -94,7 +94,6 @@
         </div>
 
     <div class ="hidden-element elem4">
-    {{-- <div class =" elem4"> --}}
         <div >
             <!-- コメント入力バーの実装始まり-->
             <form class="mb-4" method="POST" action="{{route('comments.store',['post_id' => $post])}}">
@@ -145,8 +144,6 @@
         </div>
 
         <div>
-            {{-- @include('components.comment_bar',['post' => $post]) --}}
-
             <!-- コメント内容始まり-->
             @include('components.comment_contents',['post' => $post])
             <!-- コメント内容終わり-->
@@ -156,7 +153,6 @@
     </div>
     </div>
 </div>
-
 
 
 @endforeach

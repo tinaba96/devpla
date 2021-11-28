@@ -2,14 +2,14 @@
 @foreach ($post->comments as $comment)
 	<div class="flex items-center space-x-2">
 		<div class="group relative flex flex-shrink-0 self-start cursor-pointer">
-			<img x-on:mouseover="open1 = true" x-on:mouseleave="open1 = false" src="{{ $comment->user()->first()->profile_image}}" alt="" class="h-8 w-8 object-fill rounded-full">
+			<img x-on:mouseover="open1 = true" x-on:mouseleave="open1 = false" src="{{ optional($comment->user()->first())->profile_image}}" alt="" class="h-8 w-8 object-fill rounded-full">
 			<div class="flex items-center justify-center space-x-2">
 				<div class="block">
 					<div class="flex justify-center items-center space-x-2">
 						<div class="bg-gray-100 w-auto rounded-xl px-2 pb-2">
 							<div class="font-medium">
 								<a href="#" class="hover:underline text-sm">
-									<small>{{ $comment->user()->first()->name }}</small>
+									<small>{{ optional($comment->user()->first())->name }}</small>
 								</a>
 							</div>
 							<div class="text-xs">{!! nl2br(e($comment->body)) !!}</div>
@@ -37,9 +37,5 @@
 		</div>
 	</div>
 @endforeach
-
-
-
-
 
 

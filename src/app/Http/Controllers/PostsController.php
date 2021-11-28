@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 use App\Post;
 use App\Images;
 use Storage;
@@ -13,10 +14,8 @@ class PostsController extends Controller{
     //投稿一覧ページを表示する。
     public function index()
     {
-    $posts = Auth::user()->posts()->get();
-    $posts = Post::orderBy('created_at', 'desc')->get();
-    $posts_i = Images::all();
-    return view('posts.index', ['images' => $posts_i, "posts" => $posts]);
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        return view('posts.index', ["posts" => $posts]);
     }
 
     //投稿作成ページを表示する。
