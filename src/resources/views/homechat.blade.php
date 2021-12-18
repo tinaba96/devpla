@@ -1,5 +1,4 @@
-
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 <body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/bg.jpeg); background-size:cover;">
@@ -38,11 +37,10 @@
   </form>
 
       @foreach($groups as $group)
-        <a href="{{ url('/homechat/' . $group->id) }}" class="hover:bg-blue-500 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200 bg-white ">
+
+        <div  class="z-0 hover:bg-blue-500 hover:border-transparent hover:shadow-lg group block rounded-lg p-4 border border-gray-200 bg-white ">
           <dl class="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
-            <div>
-              <dt class="sr-only">Title</dt>
-              <dd class="group-hover:text-blue leading-6 font-medium text-black">
+            <div> <dt class="sr-only">Title</dt> <dd class="group-hover:text-blue leading-6 font-medium text-black">
                 {{ $group->name }}
               </dd>
             </div>
@@ -54,23 +52,41 @@
             </div>
             <div class="col-start-2 row-start-1 row-end-3">
               <dt class="sr-only">Users</dt>
-              <dd class="flex justify-end sm:justify-start lg:justify-end xl:justify-start -space-x-2">
-                @foreach($members as $member)
-                    @if($group->id == $member->chatgroup_id)
-                    <img src="{{ $member->users()->first()->profile_image }}" width="48" height="48" class="w-7 h-7 rounded-full bg-gray-100 border-2 border-white" />
-                    @endif
+              {{-- <dd class="flex justify-end sm:justify-start lg:justify-end xl:justify-start -space-x-2"> --}}
+
+              <dd class="flex flex-row-reverse justify-end mt-10">
+                @if($members->where('chatgroup_id', $group->id)->count() > 5)
+                  <div class="flex relative w-10 h-10 bg-gray-500 justify-center items-center m-1 mr-2 -ml-3 rounded-full border-r-2 border-white text-xl text-white">
+                    <div>
+                      +{{  $members->where('chatgroup_id', $group->id)->count() -5 }}  
+                    </div>
+                  </div>
+                @endif
+
+                @foreach($members->where('chatgroup_id', $group->id) as $member)
+                  @if($member->users()->exists())
+                  <a href="{{ url('/users/'. $member->users()->first()->id) }}" class="z-10">
+                    <img src="{{ $member->users()->first()->profile_image }}" width="48" height="48" class="group_member_count flex relative w-10 h-10 rounded-full border-2 border-white" >
+                  </a>
+                  @else
+                    @continue
+                  @endif
+                  @if($loop->index == 4)
+                    @break
+                  @endif
                 @endforeach
+                <p class="group_member_count_view"></p>
               </dd>
             </div>
-            <form align='right' action='/homechat/{{ $group->id }}/members/' method='GET'>
-            @csrf
-            <button type='submit' class="hover:bg-blue-200 hover:text-blue-800 group rounded-md bg-blue-100 text-blue-600 text-sm font-medium px-4 py-2">参加メンバー</button>
-            </form>
+            <div class = text-right >
+              <a href="{{ url('/homechat/' . $group->id .  '/members/') }}" type='button' class="hover:bg-blue-200 hover:text-blue-800 group rounded-md bg-blue-100 text-blue-600 text-sm font-medium px-4 py-2">参加メンバー</a>
+              <a href="{{ url('/homechat/' . $group->id) }}" type='button' class="hover:bg-green-200 hover:text-green-800 group rounded-md bg-green-100 text-green-600 text-sm font-medium px-4 py-2">チャットに参加</a>
+            </div>
           </dl>
-        </a>
+        </div>
         @endforeach
 
-  </div>
+
     </section>
 </div>
 

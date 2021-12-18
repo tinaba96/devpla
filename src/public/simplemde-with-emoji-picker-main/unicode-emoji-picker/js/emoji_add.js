@@ -1,7 +1,3 @@
-
-
-
-
 var simplemde = new SimpleMDE({
         element: document.getElementById("editor"),
         spellChecker: false,

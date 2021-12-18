@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.app')
 
 @section('content')
 <body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/bg.jpeg); background-size:cover;">
@@ -51,7 +51,7 @@
                         @endif
                             <br>
                             <p>画像を添付</p>
-			                  <input type="file" name="image" accept="image/png, image/jpeg"/>
+			                  
 
                     </div>
 
@@ -77,17 +77,6 @@
 		</ul>
 		</div>
 		@endif
-		<!-- <form 
-			method="post"
-			action="{{ route('upload_image') }}"
-			enctype="multipart/form-data"
-		>
-			@csrf
-			<input type="file" name="image" accept="image/png, image/jpeg"/>
-			<input type="submit" value="写真投稿">
-		</form> -->
-
-
         </div>
     </div>
 @endsection

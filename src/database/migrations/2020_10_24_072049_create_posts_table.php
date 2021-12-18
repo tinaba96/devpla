@@ -16,8 +16,9 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('title', 50);
+            //$table->string('title', 50);
             $table->text('body');
+		    $table->integer('likes_count')->default(0);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

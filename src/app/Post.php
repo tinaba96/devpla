@@ -8,28 +8,32 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 class Post extends Model
 {
     protected $fillable = [
-        'title',
+        //'title',
         'body',
         'user_id', //予期せぬ代入を防ぐことができるらしい
-	'file_name',
+        'file_name',
        	'file_path'
     ];
 
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
+    public function image()
+    {
+        return $this->hasOne('App\Images');
+    }
+
     public function user()
     {
-        return $this->belongsTo('App\User', 'user_id');
+         return $this->belongsTo('App\User');
 
     }
 
     public function users()
     {
-        return $this->belongsToMany('App\User')->withTimestamps();
-        // return $this->belongsTo('App\User', 'user_id');
-    }
-
-    public function comments()
-    {
-        return $this->hasMany('App\Comment');
+        return $this->belongsToMany('App\User', 'user_posts')->withTimestamps();
     }
 
     public function getBodyHtmlAttribute($value)
@@ -37,7 +41,6 @@ class Post extends Model
         return $this->body ? Markdown::convertToHtml(e($this->body)) : NULL;
     }
     //アクセサの中でエスケープ処理定義
-
 
     public function favorite_users()
     {
