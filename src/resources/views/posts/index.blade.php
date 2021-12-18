@@ -3,7 +3,6 @@
 
 @auth
     <!-- 投稿詳細始まり-->
-    {{-- @include('components.post_details',['post' => $post]) --}}
     @include('components.post_details')
     <!-- 投稿詳細終わり-->
 @endauth
@@ -105,7 +104,7 @@
                             class="{form-control{{ $errors->has('body') ? 'is-invalid' : '' }}} emoji w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-full py-3 "
                             value="{{ old('body') }}"
                             type="text"
-                            placeholder="コメントを入力"
+                            placeholder="コメントを入力して下さい"
                     >
                     @if ($errors->has('body'))
                         <div class="invalid-feedback">

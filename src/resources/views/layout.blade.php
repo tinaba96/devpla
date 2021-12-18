@@ -1,49 +1,35 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DevPla</title>
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- CSS読み込み 移動削除厳禁-->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- CSS読み込み 移動削除厳禁-->
 
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous"
     >
-
-
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-
+    <!-- quick fix for dropdown -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-
-
-    <!-- Scripts -->
+    <!-- quick fix for dropdown -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
     <link href="{{ asset('css/view.css') }}" rel="stylesheet">
     <link href="emoji-button-master/css/emoji-button.css" rel="stylesheet">
 
@@ -55,6 +41,7 @@
     <!-- 絵文字機能 移動削除厳禁-->
 
 </head>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
@@ -78,8 +65,7 @@
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             @if (Auth::check())
-                                <a class="nav-link" href="{{ route('homechat') }}">チャット</a>
-                                <a class="nav-link" href="{{ route('posts.index') }}">投稿一覧</a>
+                                <ass="nav-link" href="{{ route('posts.index') }}">投稿一覧</a>
                                 @if (Auth::user()->role == 'admin')
                                 <a class="nav-link" href="{{ route('image_list') }}">写真一覧</a>
                                 @endif
@@ -131,7 +117,7 @@
 
         @if (Session::has('success'))
             <div class="alert alert-success" role="alert">
-                <strong> {{ Session::get('success') }}</strogn>
+                <strong> {{ Session::get('success') }}</strong>
             </div>
         @elseif (Session::has('error'))
             <div class="alert alert-danger" role="alert">

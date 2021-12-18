@@ -38,7 +38,7 @@
             <span>&emsp;{{ Auth::user()->name }}</span>
             </div>
             <div>
-              <textarea id="editor" name="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" type="text" name="" cols="60" rows="10" placeholder="テキストを入力..." class="border p-2 bg-white rounded h-28" >{{ old('body') }} </textarea>
+              <textarea id="editor" name="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" type="text" name="" cols="60" rows="10" placeholder="画像を添付する場合もテキストを入力してください" class="border p-2 bg-white rounded h-28" >{{ old('body') }} </textarea>
             </div>
           </div>
           <div class="flex flex-row items-center justify-between px-5 pt-3 pb-4 bg-white rounded-bl-lg rounded-br-lg">
@@ -72,13 +72,13 @@
           </li>
           <li></li>
           <!-- 絵文字機能のはじまり -->
-          <li>
+          <!-- <li>
             <button type="button" class="emoji-trigger inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-gray-600">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
              </button>
-           </li>
+           </li> -->
           <!-- 絵文字機能の終わり -->
             </ul>
             <button type="submit" class="px-4 py-2 text-white font-semibold bg-blue-500 rounded items-center">

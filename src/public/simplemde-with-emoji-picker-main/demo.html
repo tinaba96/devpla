@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simple MDE with Unicode Emoji</title>
+
+    <link rel="stylesheet" href="simplemde-markdown-editor-master/simplemde.min.css">
+    <script src="simplemde-markdown-editor-master/simplemde.min.js"></script>
+
+    <link href="unicode-emoji-picker/css/emoji.css" rel="stylesheet">
+
+    <style>
+        .editor-toolbar:hover {
+            opacity: unset !important;
+        }
+
+        .editor-toolbar {
+            opacity: 1;
+        }
+
+        .emoji-menu {
+            top: 100%;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .emoji-menu {
+                left: 20px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<textarea id="simplemde"></textarea>
+
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script src="unicode-emoji-picker/js/config.js"></script>
+<script src="unicode-emoji-picker/js/emoji-picker.js"></script>
+
+<script>
+    var simplemde = new SimpleMDE({
+        spellChecker: false,
+        toolbar: ["bold", "italic", "heading", "|", "code", "quote", "link", "|", "unordered-list", "ordered-list", "table", "|", "preview", "side-by-side", "fullscreen", '|',
+            {
+                name: "emojiable",
+                action: function customFunction(editor) {
+                    $.triggerEmojiMenu()
+                },
+                className: "fa fa-smile-o",
+                title: "Emoji",
+            }]
+    });
+
+
+    $(function () {
+        window.emojiPicker = new EmojiPicker({
+            assetsPath: 'unicode-emoji-picker/img/',
+            triggerButton: $("#openEmoji"),
+            emojiMenuPlace: $(".editor-toolbar"),
+            dontHideOnClick: 'fa-smile-o',
+            emojiResult: function (res) {
+                var pos = simplemde.codemirror.getCursor();
+                simplemde.codemirror.setSelection(pos, pos);
+                simplemde.codemirror.replaceSelection(res.unicode);
+            }
+        });
+        window.emojiPicker.discover();
+
+        $('.emoji-menu').css('left', $("[title='Emoji']").offset().left - 20);
+    });
+
+</script>
+</body>
+</html>

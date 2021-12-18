@@ -1,0 +1,1 @@
+var simpleMDE = new SimpleMDE({element: document.getElementById('editor')});
