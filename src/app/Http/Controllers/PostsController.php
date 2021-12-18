@@ -30,7 +30,7 @@ class PostsController extends Controller{
         // Postモデルのインスタンスを作成する
         $post = new Post();
         // タイトル
-        $post->title = $request->title;
+        //$post->title = $request->title;
         //コンテンツ
         $post->body = $request->body;
         //登録ユーザーからidを取得
@@ -76,7 +76,7 @@ class PostsController extends Controller{
     function update($post_id, Request $request)
     {
         $post = Post::findOrFail($post_id);
-        $post->title = $request->title;
+        //$post->title = $request->title;
         //コンテンツ
         $post->body = $request->body;
         //登録ユーザーからidを取得

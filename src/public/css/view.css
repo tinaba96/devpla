@@ -2,6 +2,20 @@
 .hidden-element{
   display:none;
 }
+
+.modal{
+  display:none;
+}
+
+#photo_button_input{
+  display:none;
+}
+
+
+.modal-body {
+  padding: 0!important;
+}
+
 /* マイページ用始まり */
 
   :root {
@@ -171,7 +185,7 @@
 
 .btn2{
   /* position: absolute; */
-  width: 145px;
+  width: 60px;
   height: 36px;
   /* left: 87px;
   top: 335px; */

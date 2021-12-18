@@ -8,7 +8,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 class Post extends Model
 {
     protected $fillable = [
-        'title',
+        //'title',
         'body',
         'user_id', //予期せぬ代入を防ぐことができるらしい
         'file_name',

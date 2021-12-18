@@ -50,7 +50,7 @@
                         @endif
                             <br>
                             <p>画像を添付</p>
-			                  <input type="file" name="image" accept="image/png, image/jpeg"/>
+			                  
 
                     </div>
 

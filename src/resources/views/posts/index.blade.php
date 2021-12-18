@@ -1,18 +1,16 @@
 @extends('layouts.app')
-
-
-
 @section('content')
-@auth
-<div class="bg-gray-100 mt-2 flex justify-center">
-    <a href="/post" class="btn2 navbar-nav">新規投稿作成する</a>
-</div>
 
+@auth
+    <!-- 投稿詳細始まり-->
+    {{-- @include('components.post_details',['post' => $post]) --}}
+    @include('components.post_details')
+    <!-- 投稿詳細終わり-->
 @endauth
 
 @foreach ($posts as $post)
 <div id="p2">
-    <div class="bg-gray-100 p-3 flex items-start justify-center w-screen  ">
+    <div class="bg-gray-100 p-3 flex items-start justify-center w-screen ">
     <div class="bg-white border shadow-sm px-4 py-3 my-1 rounded-lg max-w-lg w-3/4">
         <div class="flex items-center">
         <img class="h-12 w-12 rounded-full" src="{{ optional($post->user()->first())->profile_image }}">
@@ -93,10 +91,11 @@
         </div>
 
     <div class ="hidden-element elem4">
+
         <div >
             <!-- コメント入力バーの実装始まり-->
             <form class="mb-4" method="POST" action="{{route('comments.store',['post_id' => $post])}}">
-                <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
+                <div class="px-4 pt-4 mb-2 sm:mb-0">
                 <div class="relative flex">
                     @csrf
                     <input name="post_id" type="hidden" value="{{ $post->id }}">
@@ -114,11 +113,11 @@
                         </div>
                     @endif
                     <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
-                        <button type="button" class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
+                        {{-- <button type="button" class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-gray-600">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
                             </svg>
-                        </button>
+                        </button> --}}
                         <button type="button" class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-gray-600">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
@@ -148,11 +147,10 @@
             <!-- コメント内容終わり-->
         </div>
     </div>
-
-    </div>
     </div>
 </div>
 
+</div>
 
 @endforeach
 

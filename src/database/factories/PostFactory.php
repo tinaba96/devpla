@@ -21,7 +21,7 @@ use Illuminate\Support\Str;
 $factory->define(Post::class, function (Faker $faker) {
     return [
         'user_id' => $faker->numberBetween($min = 1, $max = 50),
-        'title' => $faker->realText(16),
+        //'title' => $faker->realText(16),
         'body' => $faker->realText(200),
         'created_at' => $faker->numberBetween(1,3),
         'updated_at' => $faker->numberBetween(1,3),
