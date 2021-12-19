@@ -3,8 +3,26 @@
 @section('content')
 
 <div class="container">
+    @if ($typeOfMembers == 'chat')
     <h1 class="font-medium text-white text-center ">チャット参加者一覧</h1>
+    @endif
+    @if ($typeOfMembers == 'users')
+    <h1 class="font-medium text-white text-center ">ユーザ一覧</h1>
+    @endif
+    @if ($typeOfMembers == 'following')
+    <h1 class="font-medium text-white text-center ">Following一覧</h1>
+    @endif
+    @if ($typeOfMembers == 'followers')
+    <h1 class="font-medium text-white text-center ">Followers一覧</h1>
+    @endif
 </div>
+
+<body style="background:url(https://devpla.s3.ap-northeast-1.amazonaws.com/devpla/bg.jpeg); background-size:cover;">
+@if ($users -> isEmpty())
+    <h3 style="color: gray" align='center'>
+        誰もいません
+    </h3>
+@endif
 
 @foreach ($users as $user)
 <a href="{{ url('/users/'. $user->id) }}" class="my-4 flex flex-col items-center text-black">
@@ -39,7 +57,7 @@
                                         @else
                                             <form action='/users/{{ $user->id }}/follow' method='POST'>
                                             @csrf
-                                            <button type='submit' class='whitespace-nowrap bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'> ＋ Follow</button>
+                                            <button type='submit' class='whitespace-nowrap bg-blue-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Follow</button>
                                             </form>
                                         @endif
                                     @endif

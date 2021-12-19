@@ -39,7 +39,7 @@ class ChatController extends Controller
            ]);
        User_chatgroup::create([
         'user_id' => Auth::user()->id,
-        'chatgroup_id' => Chatgroup::count()
+        'chatgroup_id' => 10*(Chatgroup::count())-5
         ]);
 
         $groups = Chatgroup::all();
@@ -68,7 +68,8 @@ class ChatController extends Controller
 
     public function members(Chatgroup $chatgroup){
         $members = $chatgroup->user_chatgroup()->get();
-        return view('chatgroup_members', compact('chatgroup','members'));
+        $typeOfMembers = 'chat';
+        return view('chatgroup_members', compact('chatgroup','members', 'typeOfMembers'));
     }
 
     public function bemember(Chatgroup $chatgroup){
@@ -82,18 +83,13 @@ class ChatController extends Controller
     public function add(Request $request, Chatgroup $chatgroup){
         $user = Auth::user();
         $chat = $request->input('chat');
-        // dd($chatgroup->id);
         Chat::create([
             'login_id' => $user->id,
             'name' => $user->name,
             'chat' => $chat,
             'chatgroup_id' => $chatgroup->id
         ]);
-
-
-
         return back();
-        // return redirect();
     }
 
     public function getData()

@@ -38,7 +38,7 @@
             <span>&emsp;{{ Auth::user()->name }}</span>
             </div>
             <div>
-              <textarea id="editor" name="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" type="text" name="" cols="60" rows="10" placeholder="画像を添付する場合もテキストを入力してください" class="border p-2 bg-white rounded h-28" >{{ old('body') }} </textarea>
+              <textarea id="editor" name="body" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}" type="text" name="" cols="60" rows="10" placeholder="画像を添付する場合もテキストを入力してください。" class="border p-2 bg-white rounded h-28" >{{ old('body') }} </textarea>
             </div>
           </div>
           <div class="flex flex-row items-center justify-between px-5 pt-3 pb-4 bg-white rounded-bl-lg rounded-br-lg">

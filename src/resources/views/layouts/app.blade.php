@@ -68,13 +68,6 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <!-- <ul class="navbar-nav mr-auto">
-                            @auth
-                                <a href="/post" class="btn2">新規投稿</a>
-                            @endauth
-                        </ul> -->
-
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             @if (Auth::check())

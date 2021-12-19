@@ -26,14 +26,16 @@ class FollowController extends Controller
 
     public function following($id){
         $user = User::find($id);
-        $follows = $user->following()->get();
-        return view('follow', compact('follows', 'user'));
+        $users = $user->following()->get();
+        $typeOfMembers = 'following';
+        return view('users', compact('users', 'user', 'typeOfMembers'));
     }
 
     public function followers($id){
         $user = User::find($id);
-        $follows = $user->followers()->get();
-        return view('follow', compact('follows', 'user'));
+        $users = $user->followers()->get();
+        $typeOfMembers = 'followers';
+        return view('users', compact('users', 'user', 'typeOfMembers'));
     }
 
 }

@@ -52,7 +52,7 @@
                             <div class="grid grid-cols-1">
                                 <div class="px-4 py-2 font-semibold">業績と資格</div>
                                 <div class="px-4 py-2">
-                                <input name='achieve_quali' type='text' class='form-control form-control-sm', value='{{ Auth::user()->achieve_quali}} '>
+                                <input name='achieve_quali' type='text' class='form-control form-control-sm', value='{{ Auth::user()->achieve_quali }} '>
                                 </div>
                             </div>
                         </div>
@@ -60,9 +60,6 @@
 
                 </form>
                 </div>
-                    <!-- <button
-                        class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Show
-                        Full Information</button> -->
 </div>
 @endsection
 
