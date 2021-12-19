@@ -33,10 +33,10 @@ class HomeController extends Controller
         return view('home');
     }
 
-
     public function users(){
         $users = User::all();
-        return view('users', compact('users'));
+        $typeOfMembers = 'users';
+        return view('users', compact('users', 'typeOfMembers'));
     }
 
     public function user(User $user){
@@ -44,13 +44,13 @@ class HomeController extends Controller
     }
 
     public function show(){
-        $users = Auth::user();
-        return view('mypage', compact('users'));
+        $user = Auth::user();
+        return view('user', compact('user'));
     }
 
     public function edit(){
-        $users = Auth::user();
-        return view('edit_mypage', compact('users'));
+        $user = Auth::user();
+        return view('edit_mypage', compact('user'));
     }
 
     public function update(Request $requests){
@@ -61,8 +61,8 @@ class HomeController extends Controller
             'work_history' => $requests->work_history,
             'achieve_quali' => $requests->achieve_quali,
         ]);
-        $users = Auth::user();
-        return view('mypage', compact('users'));
+        $user = Auth::user();
+        return view('user', compact('user'));
     }
 
     public function edit_image() {
@@ -84,10 +84,9 @@ class HomeController extends Controller
                 // アップロードした画像のフルパスを取得
                 $user->profile_image = Storage::disk('s3')->url($path);
             }
-
         }
         $user->save();
-        return view('mypage');
+        return view('user', compact('user'));
     }
 
     private function saveProfileImage($image, $id) {

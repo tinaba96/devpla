@@ -110,19 +110,6 @@
                         <div class="invalid-feedback">
                         {{ $errors->first('body') }}
                         </div>
-<<<<<<< HEAD
-    @endif
-                    <div class="card-footer">
-                        <span class="mr-2">
-                            投稿日時 {{ $post->created_at->format('Y.m.d') }}
-                            投稿日時 {{ intval($post->created_at->format('s'))+1 }}
-                        </span>
-                        @if ($post->comments->count())
-                            <span class="badge badge-primary">
-                                コメント {{ $post->comments->count() }}件
-                            </span>
-                        @endif
-=======
                     @endif
                     <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
                         {{-- <button type="button" class="inline-flex items-center justify-center rounded-full h-10 w-10 transition duration-500 ease-in-out text-gray-500 hover:bg-gray-300 focus:outline-none">
@@ -146,7 +133,6 @@
                             <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
                             </svg>
                         </button>
->>>>>>> develop
                     </div>
                 </div>
                 </div>
@@ -166,7 +152,6 @@
 </div>
 
 @endforeach
-
 
 @endsection
 

@@ -1,15 +1,17 @@
 var simplemde = new SimpleMDE({
         element: document.getElementById("editor"),
         spellChecker: false,
-        toolbar: ["bold", "italic", "heading", "|", "code", "quote", "link", "|", "unordered-list", "ordered-list", "table", "|", "preview", "side-by-side", "fullscreen", '|',
-            {
-                name: "emojiable",
-                action: function customFunction(editor) {
-                    $.triggerEmojiMenu()
-                },
-                className: "fa fa-smile-o",
-                title: "Emoji",
-            }]
+        toolbar: ["bold", "italic", "heading", "|", "code", "quote", "link", "|", "unordered-list", "ordered-list", "table", "|", "preview", "side-by-side", "fullscreen"
+            // , '|',
+            // {
+            //     name: "emojiable",
+            //     action: function customFunction(editor) {
+            //         $.triggerEmojiMenu()
+            //     },
+            //     className: "fa fa-smile-o",
+            //     title: "Emoji",
+            // }
+        ]
     });
 
 

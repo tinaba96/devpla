@@ -427,14 +427,11 @@
               <ul class="w-full text-center text-base font-bold">
                 <li class="border-b py-4">新規開発グループ作成可能</li>
                 <li class="border-b py-4">ダイレクトメッセージ可能</li>
-                <!-- <li class="border-b py-4">Thing</li> -->
-                <!-- <li class="border-b py-4">Thing</li> -->
               </ul>
             </div>
             <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
               <div class="w-full pt-6 text-4xl font-bold text-center">
                 月額100円
-                <!-- <span class="text-base">/ per user</span> -->
               </div>
               <div class="flex items-center justify-center">
                 <a href="/register">
@@ -451,15 +448,11 @@
                 プロ
               </div>
               <ul class="w-full text-center text-sm">
-                <!-- <li class="border-b py-4">Thing</li>
-                <li class="border-b py-4">Thing</li>
-                <li class="border-b py-4">Thing</li> -->
               </ul>
             </div>
             <div class="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
               <div class="w-full pt-6 text-3xl text-gray-600 font-bold text-center">
                 月額200円
-                <!-- <span class="text-base">/ per user</span> -->
               </div>
               <div class="flex items-center justify-center">
                 <a href="/register">
@@ -484,9 +477,6 @@
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <!-- <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                xGETTING STARTED
-              </p> -->
               <div class="w-full font-bold text-xl text-gray-800 px-6">
                 どこのプログラミング言語でも対応していますか？
               </div>
@@ -507,9 +497,6 @@
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <!-- <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                xGETTING STARTED
-              </p> -->
               <div class="w-full font-bold text-xl text-gray-800 px-6">
                 たまにしか開発に着手できなくても参加可能ですか？
               </div>
@@ -531,9 +518,6 @@
         <div class="w-full md:w-1/3 p-6 flex flex-col flex-grow flex-shrink">
           <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
             <a href="#" class="flex flex-wrap no-underline hover:no-underline">
-              <!-- <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-                xGETTING STARTED
-              </p> -->
               <div class="w-full font-bold text-xl text-gray-800 px-6">
                 開発する上で知り合ったメンバーを、自社に引き抜きしてもよいですか？
               </div>
@@ -599,8 +583,6 @@
         <div class="w-full flex flex-col md:flex-row py-6">
           <div class="flex-1 mb-6 text-black">
             <a class="text-gray-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-              <!--Icon from: http://www.potlabicons.com/ -->
-              <!-- <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005"> -->
                 <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />
                 <path
                   class="plane-take-off"
@@ -616,60 +598,19 @@
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
                 <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">注意事項</a>
               </li>
-              <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">ヘルプ</a>
-              </li>
-              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">サポート</a>
-              </li> -->
             </ul>
           </div>
-          <!-- <div class="flex-1">
-            <p class="uppercase text-gray-500 md:mb-6">規制</p>
-            <ul class="list-reset mb-6">
-              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">条件</a>
-              </li>
-              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">プライバシー</a>
-              </li>
-            </ul>
-          </div> -->
           <div class="flex-1">
             <p class="uppercase text-gray-500 md:mb-6">ソーシャルメディア</p>
             <ul class="list-reset mb-6">
-              <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Facebook</a>
-              </li> -->
-              <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Linkedin</a>
-              </li> -->
               <li class="mt-2 inline-block mr-2 md:block md:mr-0">
                 <a href="https://twitter.com/devpla2" class="no-underline hover:underline text-gray-800 hover:text-pink-500">Twitter</a>
               </li>
             </ul>
           </div>
-          <!-- <div class="flex-1">
-            <p class="uppercase text-gray-500 md:mb-6">会社概要</p>
-            <ul class="list-reset mb-6">
-              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">公式ブログ</a>
-              </li>
-              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">私たちについて</a>
-              </li>
-              <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" class="no-underline hover:underline text-gray-800 hover:text-pink-500">連絡する</a>
-              </li>
-            </ul>
-          </div> -->
         </div>
       </div>
-      <!-- <a href="https://www.freepik.com/free-photos-vectors/background" class="text-gray-500">Background vector created by freepik - www.freepik.com</a>
     </footer>
-    <!-- jQuery if you need it
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  -->
     <script>
       var scrollpos = window.scrollY;
       var header = document.getElementById("header");
@@ -715,9 +656,6 @@
       });
     </script>
     <script>
-      /*Toggle dropdown list*/
-      /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
-
       var navMenuDiv = document.getElementById("nav-content");
       var navMenu = document.getElementById("nav-toggle");
 
