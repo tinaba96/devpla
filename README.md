@@ -5,23 +5,23 @@ This app is a Platform where people can gather with web developers for their dev
 
 This application has similar features as Slack. (Posting function for reporting progress, emoji function, photo posting function, direct replying to posts, noticeboard function divided into threads, etc.) The content you write can be shared with people all over the country (The scope of publication will be finely controllable.) The system also allows you to send direct messages to people you are interested in, gather development members, and create groups. It provides you the chances of getting advice from experts and help you develop.
 
-## objectives & background
+## Objectives & background
 Some developer specially the beginners are struggling to keep learning and finding friends to learn with. It would be fun and motivating if you could output what you understood in detail, share it with people all over the country and have them comment on it in order to improve your development skills. You are always free to ask questions and answer someone's questions.
 Therefore, this app will help you support learning and looking for friends to develop with. This is focusing more on finding other developers before they starts to use the another communication tools such as slack or google chat.
 
 
 
-## approach
+## Approach
 The template of tailwind CSS is mainly used in the frontend UI which is attrative for users. Also many functionalities such as "emoji", "like" are used to improve the user experince.
 
 
-## results
+## Results
 10 users are using this app to send messages and post their information.
 
 
  
 
-## tech stack
+## Main tech stack
 - PHP7
 - Laravel7
 - Tailwind CSS
